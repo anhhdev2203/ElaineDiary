@@ -1,11 +1,22 @@
-import React from 'react'
-import { useParams } from 'react-router'
+import { Link } from "react-router-dom";
 
-function MyDiary() {
-    
+function mydinary() {
   return (
-    <div>MyDiary </div>
-  )
+    <div>
+      <Link to={"1"}>
+        <button>1</button>
+      </Link>
+      <Link to={"2"}>
+        <button>2</button>
+      </Link>
+      <Link to={"3"}>
+        <button>3</button>
+      </Link>
+      <Link to={"4"}>
+        <button>4</button>
+      </Link>
+    </div>
+  );
 }
 
-export default MyDiary
+export default mydinary;
