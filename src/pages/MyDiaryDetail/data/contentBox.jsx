@@ -1,6 +1,6 @@
-import { Box, ListItemText, Divider } from "@mui/material";
+import { Box, ListItemText, Divider, Typography } from "@mui/material";
 
-export const ContentBox = () => {
+export const ContentBox = ({ title, content }) => {
   return (
     <Box
       sx={{
@@ -11,9 +11,10 @@ export const ContentBox = () => {
         borderRadius: "24px",
       }}
     >
-      <ListItemText primary="Tiêu đề nhật ký" />
-
+      <ListItemText primary={title} />
       <Divider />
+
+      <Typography>{content}</Typography>
     </Box>
   );
 };

@@ -1,10 +1,10 @@
-import { Stack } from "@mui/material";
+import { Stack, Box, Typography } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
 import { ContentBox } from "./data/contentBox";
-
-function MyDinaryDetail() {
+import "./myDiary.css";
+function MyDiaryDetail() {
   const { id } = useParams();
   // happy: rất vui, great: vui, normal: bình thường, sad: buồn, upset: rất buồn
   const [dinaryList, setDinaryList] = useState(DATASTORE);
@@ -27,22 +27,44 @@ function MyDinaryDetail() {
     <>
       <Stack direction={"column"}>
         {dinaryList
-          .filter((dinary) => dinary.id === id)
-          .map((dinary, key) => (
+          .filter((diary) => diary.id === id)
+          .map((diary, key) => (
             <Stack
               key={key}
               sx={{
-                backgroundColor: feelColor(dinary.color),
+                backgroundColor: feelColor(diary.color),
                 minWidth: "100vw",
                 minHeight: "100vh",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                position: "relative",
               }}
             >
-              {dinary.date}
-
-              <ContentBox sx={{ position: "absolute" }} />
+              <Stack
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "Dancing Script",
+                    fontSize: "80px",
+                    lineHeight: "100px",
+                  }}
+                >
+                  Nhật ký của tôi
+                </Typography>
+                <Typography> {diary.title}</Typography>
+                <Typography>{diary.date}</Typography>
+              </Stack>
+              <ContentBox
+                title={diary.title}
+                content={diary.content}
+                sx={{ position: "absolute" }}
+              />
             </Stack>
           ))}
       </Stack>
@@ -50,4 +72,4 @@ function MyDinaryDetail() {
   );
 }
 
-export default MyDinaryDetail;
+export default MyDiaryDetail;

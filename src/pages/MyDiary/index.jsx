@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function mydinary() {
+function mydiary() {
   return (
     <div>
       <Link to={"1"}>
@@ -19,4 +19,4 @@ function mydinary() {
   );
 }
 
-export default mydinary;
+export default mydiary;
