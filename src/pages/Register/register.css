@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&family=Clicker+Script&family=Dancing+Script&display=swap');
+
+
+/* Hình decor bên trái */
+.css-gb9r5d {
+    margin-top: 20% !important;
+    margin-left: 20% ;
+}
+/* Chip decor bên trái */
+.css-1nlrpsd-MuiChip-root {
+    margin-left: 56%;
+    width: 24vh;
+    margin-top: 85%
+}
+
+
+/* Input */
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
+    background-color: #FFFFFF !important;
+    border-radius: 24px !important;
+}
+
+/* Nhập dữ liệu */
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+    padding-top: 12px !important;
+    font-size: 12px !important;
+}
+
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    padding: 1px !important;
+}
+
+/* Nút đăng kí */
+.css-hwoclz-MuiButtonBase-root-MuiButton-root{
+    background-color: #BDCFA1 !important;
+    box-shadow: none !important;
+    border-radius: 24px !important;
+    color: #000 !important;
+    border: solid 1px #000 !important;
+    width: 20%;
+
+}
+.css-hwoclz-MuiButtonBase-root-MuiButton-root:hover{
+    background-color: #E6F6CB !important;
+}
+
+/* Link đăng nhập */
+.css-pl8gqh-MuiStack-root>:not(style)~:not(style) {
+    margin-left: 16px;
+    color: #5D579A;
+    font-family: Be Vietnam Pro;
+    font-size: 12px;
+}
