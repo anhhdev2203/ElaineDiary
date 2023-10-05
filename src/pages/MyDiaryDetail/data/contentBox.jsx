@@ -1,6 +1,7 @@
 import {
   Box,
   ListItemText,
+  ListItem,
   Divider,
   Typography,
   styled,
@@ -38,8 +39,6 @@ const responsiveContent = {
   },
   "@media (min-width: 1200px)": {
     //lap top to
-    backgroundColor: "#red",
-
     fontSize: "2.5rem",
   },
 };
@@ -50,11 +49,11 @@ export const ContentBox = ({ title, content }) => {
         display: "flex",
         alignItems: "center",
         maxWidth: "80%",
-        minWidth: "300px",
+        // minWidth: "300px",
         boxShadow: "12px 12px 0px 0px  #30173F",
         backgroundColor: "#C2BCC5",
         borderRadius: "24px",
-        border: "#fff",
+        border: "#fff !important",
 
         // transform: "scale(1)",
         // transition: "transform 0.3s ease-in-out",
@@ -71,18 +70,27 @@ export const ContentBox = ({ title, content }) => {
         <Container
           variant="h5"
           sx={{
-            mb: 1,
+            // m: 4,
+            fontFamily: "Roboto",
+            fontSize: "24px",
+            // lineHeight: "28px",
+            textAlign: "center",
+
             ...responsiveContent,
+            pt: 4,
+            pb: 4,
+            m: 0,
+            position: "absolutess",
           }}
         >
           {title}
         </Container>
-        <Divider sx={{ border: "fff" }} />
+        <Divider variant="middle" />
 
         <Grid
           container
           spacing={1}
-          minHeight={160}
+          // minHeight={160}
           sx={{ position: "relative" }}
         >
           <Grid
@@ -105,6 +113,7 @@ export const ContentBox = ({ title, content }) => {
                 ...responsiveContent,
                 // marginLeft: "3%",
                 textAlign: "left",
+                fontFamily: "Roboto",
               }}
             >
               {content}
