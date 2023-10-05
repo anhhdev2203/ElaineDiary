@@ -6,11 +6,39 @@ import Logo from '../../assets/image/logoSignup.png'
 import Contact from '../../assets/image/decorContactSignup.png'
 import '../../App.css'
 import './login.css'
+import isEmpty from "validator/lib/isEmpty"
+import { useState } from 'react'
+import Register from '../Register';
 
 import createSlider from './slide';
 
 
-function Login() {
+const Login = ({account, setAccount, accountList, setAccountList}) =>  {
+
+  //Validation
+  const [msgValidation, setMsgValidation] = useState('')
+
+  const validateAll = () => {
+    const msg = {}
+    if (isEmpty(account.username)) {
+      msg.username = "Username is required"
+    }
+    if (isEmpty(account.password)) {
+      msg.password = "Password is required"
+    }
+
+    setMsgValidation(msg)
+    if (Object.keys(msg).length > 0) return false
+    return true
+  }
+
+  //Submit
+  const handleLogin= () => {
+    const isValid = validateAll()
+    if(!isValid) return 
+  }
+  
+
   return (
     <>
       <style>
@@ -23,6 +51,7 @@ function Login() {
           }
         `}
       </style>
+      
       
       <Stack direction="row"
         sx={{
@@ -97,16 +126,18 @@ function Login() {
               alignItems: 'center',
             }}
           >
-            <TextField id="outlined-basic" label="Tên người dùng" variant="outlined"
+            <TextField id="outlined-basic" label="Tên người dùng" variant="outlined" />
+            <p className='errorMsg'>{msgValidation.username}</p>
 
-            />
             <TextField id="outlined-password-input"
               label="Mật khẩu"
               type="password"
               autoComplete="off"
               // autoComplete="current-password"
             />
-            <Button variant="contained">Đăng nhập</Button>
+            <p className='errorMsg'>{msgValidation.password}</p>
+
+            <Button variant="contained" onClick={handleLogin}>Đăng nhập</Button>
             <Stack direction="row" spacing={4} alignSelf="center">
               <Typography
                 sx={{

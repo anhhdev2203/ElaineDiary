@@ -90,3 +90,12 @@
 .css-1vuj8we-MuiStack-root {
   margin-right: 20% !important;
 }
+
+.errorMsg {
+  color: #cc0000;
+  top: 0;
+  padding-right: 250px;
+  margin-top: 1px !important;
+  font-size: 8px;
+  font-family: Be Vietnam Pro;
+}
