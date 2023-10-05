@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
 import { ContentBox } from "./data/contentBox";
-import "./myDiary.css";
+import "./myDiaryDetail.css";
 function MyDiaryDetail() {
   const { id } = useParams();
   // happy: rất vui, great: vui, normal: bình thường, sad: buồn, upset: rất buồn
@@ -25,7 +25,7 @@ function MyDiaryDetail() {
 
   return (
     <>
-      <Stack direction={"column"}>
+      <Stack direction={"column"} sx={{ paddingTop: "111px" }}>
         {dinaryList
           .filter((diary) => diary.id === id)
           .map((diary, key) => (
@@ -38,7 +38,6 @@ function MyDiaryDetail() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                position: "relative",
               }}
             >
               <Stack
@@ -60,11 +59,7 @@ function MyDiaryDetail() {
                 <Typography> {diary.title}</Typography>
                 <Typography>{diary.date}</Typography>
               </Stack>
-              <ContentBox
-                title={diary.title}
-                content={diary.content}
-                sx={{ position: "absolute" }}
-              />
+              <ContentBox title={diary.title} content={diary.content} />
             </Stack>
           ))}
       </Stack>

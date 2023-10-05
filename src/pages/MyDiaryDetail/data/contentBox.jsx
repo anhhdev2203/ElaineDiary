@@ -6,13 +6,17 @@ import {
   Grid,
   ButtonBase,
   styled,
+  Container,
 } from "@mui/material";
 import "../img/cover.png";
 import coverImage from "../img/cover.png";
 
 const Img = styled("img")({
-  // height: "100%",
+  height: "100%",
   // width: "50%",
+  position: "absolute",
+  top: 0,
+  left: 0,
 });
 export const ContentBox = ({ title, content }) => {
   return (
@@ -22,30 +26,36 @@ export const ContentBox = ({ title, content }) => {
         alignItems: "center",
         maxWidth: "80%",
         minWidth: "300px",
-        // minHeight: "480px",
         boxShadow: "12px 12px 0px 0px  #30173F",
         backgroundColor: "#C2BCC5",
-        padding: 3,
         borderRadius: "24px",
-        margin: "auto",
+
+        // transform: "scale(1)",
+        // transition: "transform 0.3s ease-in-out",
+        // "&:hover": {
+        //   transform: "scale(1.1)",
+        // },
       }}
     >
-      <ButtonBase
-        sx={{
-          marginBottom: { xs: 2, md: 0 },
-          marginRight: { xs: 0, md: 2 },
-          height: "100%",
-        }}
-      >
-        <Img alt="cover" src={coverImage} />
-      </ButtonBase>
-
-      <Box variant="h5" sx={{ flexDirection: "column", md: "row", mb: 1 }}>
-        <ListItemText primary={title} />
+      <Box variant="h5" sx={{ direction: "row" }}>
+        <Container>
+          <ListItemText variant="h5" sx={{ mb: 1 }} primary={title} />
+        </Container>
         <Divider />
-        <Grid>
-          <Typography>{content}</Typography>
-        </Grid>
+
+        {/* <Container sx={{ position: "relative" }}> */}
+        <ButtonBase>
+          <Img alt="cover" src={coverImage} />
+          <Typography
+            sx={{
+              // marginLeft: "3%",
+              textAlign: "left",
+            }}
+          >
+            {content}
+          </Typography>
+        </ButtonBase>
+        {/* </Container> */}
       </Box>
     </Box>
   );

@@ -12,6 +12,7 @@ import { styled } from "@mui/material/styles";
 import React from "react";
 import elaine from "../../assets/image/elaine.png";
 import people from "../../assets/image/logochandung.png";
+
 import triangle from "../../assets/image/logotamgiac.png";
 const Con = styled(Container)({
   maxWidth: "1440px",
@@ -21,7 +22,7 @@ function Header() {
   return (
     <>
       <Box sx={{ width: "100vw", position: "fixed" }}>
-        <Container maxWidth="lg">
+        <Con maxWidth="lg">
           <AppBar
             color="transparent"
             position="static"
@@ -55,7 +56,7 @@ function Header() {
               ></ArrowDropDownIcon>
             </Toolbar>
           </AppBar>
-        </Container>
+        </Con>
       </Box>
     </>
   );
