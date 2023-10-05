@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
 import { ContentBox } from "./data/contentBox";
 import "./myDiaryDetail.css";
+// import responsiveContent
 function MyDiaryDetail() {
   const { id } = useParams();
   // happy: rất vui, great: vui, normal: bình thường, sad: buồn, upset: rất buồn
@@ -59,6 +60,7 @@ function MyDiaryDetail() {
                 <Typography> {diary.title}</Typography>
                 <Typography>{diary.date}</Typography>
               </Stack>
+
               <ContentBox title={diary.title} content={diary.content} />
             </Stack>
           ))}
