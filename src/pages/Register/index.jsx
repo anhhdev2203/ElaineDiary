@@ -5,31 +5,31 @@ import DecorBook from '../../assets/image/decorBookRegister.png'
 import Label from '../../assets/image/labelRegister.png'
 import './register.css'
 import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import isEmpty from "validator/lib/isEmpty"
 
 function Register() {
 
   const [account, setAccount] = useState({
-    id: uuidv4(),
+    id: "",
     username: "",
     email: "",
     password: ""
   })
   console.log(account);
 
-  const [accountList, setAccountList] = useState(() => {
-    const storageAccount = JSON.parse(localStorage.getItem('account'))
-    console.log(storageAccount);
-    return storageAccount
-  })
+  // const [accountList, setAccountList] = useState(() => {
+  //   const storageAccount = JSON.parse(localStorage.getItem('account'))
+  //   console.log(storageAccount);
+  //   return storageAccount
+  // })
+  
 
-  const handleSubmit = (prev) => {
-    const newAccountList = [...prev, account]
-    const jsonAccountList = JSON.stringify(newAccountList)
-    localStorage.setItem('account', jsonAccountList)
-    return newAccountList
-  }
+  // const handleSubmit = (prev) => {
+  //   const newAccountList = [...prev, account]
+  //   const jsonAccountList = JSON.stringify(newAccountList)
+  //   localStorage.setItem('account', jsonAccountList)
+  //   return newAccountList
+  // }
 
 
   //Validation
@@ -56,6 +56,7 @@ function Register() {
   const handleRegister = () => {
     const isValid = validateAll()
     if(!isValid) return 
+    
   }
 
   return (

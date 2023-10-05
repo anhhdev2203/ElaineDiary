@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Box, Button, Slide, Stack, TextField, Typography } from '@mui/material';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Logo from '../../assets/image/logoSignup.png'
@@ -13,8 +13,28 @@ import Register from '../Register';
 import createSlider from './slide';
 
 
-const Login = ({account, setAccount, accountList, setAccountList}) =>  {
+function Login() {
+  const [account, setAccount] = useState({
+    id: "",
+    username: "",
+    birthYear: "",
+    password: ""
+  })
 
+  const [accountList, setAccountList] = useState([
+    {
+      id: 1,
+      username: "admin",
+      birthYear:"1999",
+      password:"123"
+    },{
+      id: 2,
+      username: "manager",
+      birthYear:"2001",
+      password:"abc"
+      
+    }
+  ])
   //Validation
   const [msgValidation, setMsgValidation] = useState('')
 
@@ -33,11 +53,21 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
   }
 
   //Submit
-  const handleLogin= () => {
+
+  const handleLogin = () => {
     const isValid = validateAll()
-    if(!isValid) return 
+    if (!isValid) return
+    
+    const accountExist = accountList.find( accountInput => {
+      accountInput.username === account.username && accountInput.password === account.password
+    })
+    if(accountExist) return  window.location.href = '/'
+    
+    // return <Navigate to="/register" replace={true}></Navigate>
+    
   }
-  
+
+  console.log(account);
 
   return (
     <>
@@ -51,8 +81,8 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
           }
         `}
       </style>
-      
-      
+
+
       <Stack direction="row"
         sx={{
           backgroundColor: "#FFF6DC",
@@ -60,10 +90,10 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
           position: 'relative'
         }}
       >
-        <Box 
-        sx={{
-          width:"50%"
-        }}
+        <Box
+          sx={{
+            width: "50%"
+          }}
         >
           <Box
             component="img"
@@ -93,8 +123,8 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
             sx={{
               width: "100%",
               marginBottom: "8vh",
-              marginTop: "24vh",
-                          
+              marginTop: "20vh",
+
             }}>
             <Typography
               sx={{
@@ -104,7 +134,7 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
                 lineHeight: "normal",
                 fontWeight: 400,
                 fontSize: 64,
-                
+
 
               }}
             >I'm here...</Typography>
@@ -120,20 +150,33 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
           <Stack
             direction="column"
             spacing={2}
-            sx={{              
-              width:"70%",
-              marginLeft:"5%",
+            sx={{
+              width: "70%",
+              marginLeft: "5%",
               alignItems: 'center',
             }}
           >
-            <TextField id="outlined-basic" label="Tên người dùng" variant="outlined" />
+            <TextField id="outlined-basic" label="Tên người dùng" variant="outlined"
+             onChange={(e) => {
+              setAccount({
+                ...account,
+                username: e.target.value,
+              })
+            }}
+            />
             <p className='errorMsg'>{msgValidation.username}</p>
 
             <TextField id="outlined-password-input"
               label="Mật khẩu"
               type="password"
               autoComplete="off"
-              // autoComplete="current-password"
+            // autoComplete="current-password"
+            onChange={(e) => {
+              setAccount({
+                ...account,
+                password: e.target.value,
+              })
+            }}
             />
             <p className='errorMsg'>{msgValidation.password}</p>
 
