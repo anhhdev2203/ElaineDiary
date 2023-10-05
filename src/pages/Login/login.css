@@ -5,7 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* border: none !important; */
+  border: none !important;
 }
 
 /* Chỉnh kích thước của textfield */
@@ -29,7 +29,7 @@
 }
 
 .css-ihj99v-MuiStack-root {
-  /* width: 100% !important; */
+  width: 100% !important;
 }
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
@@ -63,7 +63,7 @@
 }
 
 /* Nút đăng nhập */
-.css-sghohy-MuiButtonBase-root-MuiButton-root {
+.css-1engchi-MuiButtonBase-root-MuiButton-root {
   background-color: #FFC6AC !important;
   box-shadow: none !important;
   width: 120px;
@@ -71,12 +71,11 @@
   text-transform: none !important;
   color: #000 !important;
   border-radius: 24px !important;
-  margin-right: 14% !important;
 
 }
 
 /* Nút đăng nhập khi hover */
-.css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
+.css-1engchi-MuiButtonBase-root-MuiButton-root:hover {
   background-color: #FEEFE8 !important;
 }
 
@@ -87,9 +86,6 @@
 
 }
 
-.css-1vuj8we-MuiStack-root {
-  margin-right: 20% !important;
-}
 
 .errorMsg {
   color: #cc0000;

@@ -8,7 +8,6 @@ import '../../App.css'
 import './login.css'
 import isEmpty from "validator/lib/isEmpty"
 import { useState } from 'react'
-import Register from '../Register';
 
 import createSlider from './slide';
 
@@ -39,13 +38,18 @@ function Login() {
   const [msgValidation, setMsgValidation] = useState('')
 
   const validateAll = () => {
-    const msg = {}
+    let msg = {}
     if (isEmpty(account.username)) {
       msg.username = "Username is required"
     }
     if (isEmpty(account.password)) {
       msg.password = "Password is required"
     }
+
+    const accountExist = accountList.some(
+      (acc) => acc.username === account.username && acc.password === account.password
+    );
+  
 
     setMsgValidation(msg)
     if (Object.keys(msg).length > 0) return false
@@ -57,11 +61,13 @@ function Login() {
   const handleLogin = () => {
     const isValid = validateAll()
     if (!isValid) return
+    const accountExist = accountList.some(acc => acc.username === account.username && acc.password === account.password)
+    if(accountExist) 
+    return  window.location.href = '/'
+    setMsgValidation("Username or Password is incorrect")
+    return alert("Username or password is incorrect")
     
-    const accountExist = accountList.find( accountInput => {
-      accountInput.username === account.username && accountInput.password === account.password
-    })
-    if(accountExist) return  window.location.href = '/'
+
     
     // return <Navigate to="/register" replace={true}></Navigate>
     
@@ -147,12 +153,15 @@ function Login() {
             >Đây là miền kí ức của bạn</Typography>
           </Box>
 
+
+
+
           <Stack
             direction="column"
             spacing={2}
             sx={{
-              width: "70%",
-              marginLeft: "5%",
+              width: "100%",
+              
               alignItems: 'center',
             }}
           >
@@ -162,6 +171,10 @@ function Login() {
                 ...account,
                 username: e.target.value,
               })
+            }}
+            sx={{
+              borderRadius: '20px',
+              width:"60%" // Đặt border-radius theo ý muốn
             }}
             />
             <p className='errorMsg'>{msgValidation.username}</p>
@@ -176,11 +189,19 @@ function Login() {
                 ...account,
                 password: e.target.value,
               })
+              
+            }}
+            sx={{
+              width:"60%"
             }}
             />
             <p className='errorMsg'>{msgValidation.password}</p>
 
-            <Button variant="contained" onClick={handleLogin}>Đăng nhập</Button>
+            <Button variant="contained" onClick={handleLogin} className='buttonLogin'
+              sx={{
+                marginLeft:"10%"
+              }}
+            >Đăng nhập</Button>
             <Stack direction="row" spacing={4} alignSelf="center">
               <Typography
                 sx={{

@@ -12,8 +12,9 @@ function Register() {
   const [account, setAccount] = useState({
     id: "",
     username: "",
-    email: "",
-    password: ""
+    birthYear: "",
+    password: "",
+    retakepassword: ""
   })
   console.log(account);
 
@@ -22,7 +23,7 @@ function Register() {
   //   console.log(storageAccount);
   //   return storageAccount
   // })
-  
+
 
   // const handleSubmit = (prev) => {
   //   const newAccountList = [...prev, account]
@@ -37,15 +38,41 @@ function Register() {
 
   const validateAll = () => {
     const msg = {}
+    // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
+    const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
     if (isEmpty(account.username)) {
-      msg.username = "Username is required"
+      msg.username =  "*Bắc buộc"
     }
-    if (isEmpty(account.email)) {
-      msg.email = "Email is required"
+
+    // if(passwordPattern.test(account.password)){
+    //   msg.password = "Password should have at least 8 character and contains at least one uppercase, one lowercase and a number"
+    // }
+    if (account.password.length < 8 && account.password.length > 0) {
+      msg.password = "*Độ dài mật khẩu ít nhất 8 chữ số"
     }
+
+    if (isEmpty(account.retakepassword)) {
+      msg.retakepassword = "*Tên người dùng bắt buộc"
+    }
+
+    if (account.password !== account.retakepassword) {
+      msg.retakepassword = "*Mật khẩu không khớp"
+    }
+
+    const birthYearPattern = /^(19\d\d|20[01]\d|202[0-3])$/;
+
+    if (!birthYearPattern.test(account.birthYear)) {
+      msg.birthYear = "*Năm sinh bắc buộc và từ 1900-2023";
+    }
+
     if (isEmpty(account.password)) {
-      msg.password = "Password is required"
+      msg.password =  "*Bắc buộc"
     }
+    if (isEmpty(account.birthYear)) {
+      msg.birthYear = "*Bắc buộc"
+    }
+
+
 
     setMsgValidation(msg)
     if (Object.keys(msg).length > 0) return false
@@ -55,9 +82,11 @@ function Register() {
   //Submit
   const handleRegister = () => {
     const isValid = validateAll()
-    if(!isValid) return 
-    
+    if (!isValid) return
+    return window.location.href = '/'
+
   }
+  console.log(account);
 
   return (
     <>
@@ -187,7 +216,7 @@ function Register() {
             />
             <p className='errorMsg'>{msgValidation.username}</p>
 
-            <TextField id="outlined-basic" label="Email" variant="outlined" size="small"
+            <TextField id="outlined-basic" label="Năm sinh" variant="outlined" size="small"
               sx={{
                 width: 400,
                 maxWidth: "80%"
@@ -195,11 +224,12 @@ function Register() {
               onChange={(e) => {
                 setAccount({
                   ...account,
-                  email: e.target.value,
+                  birthYear: e.target.value,
                 })
               }}
             />
-            <p className='errorMsg email'>{msgValidation.email}</p>
+            <p className='errorMsg email'>{msgValidation.birthYear}</p>
+
 
             <TextField id="outlined-password-input"
               label="Mật khẩu"
@@ -226,10 +256,16 @@ function Register() {
               sx={{
                 width: 400,
                 maxWidth: "80%"
-              }}        
+              }}
+              onChange={(e) => {
+                setAccount({
+                  ...account,
+                  retakepassword: e.target.value,
+                })
+              }}
             />
-            <p className='errorMsg'>{msgValidation.password}</p>
-            
+            <p className='errorMsg'>{msgValidation.retakepassword}</p>
+
 
             <Button variant="contained"
               sx={{
