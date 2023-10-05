@@ -1,9 +1,15 @@
-import { Stack, Box, Typography } from "@mui/material";
+import { Stack, Box, Typography, styled } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
-import { ContentBox } from "./data/contentBox";
+import { ContentBox, Img } from "./data/contentBox";
 import "./myDiaryDetail.css";
+import { responsiveContent } from "./data/contentBox";
+
+import girlReads from "./img/readBook.png";
+
+// import responsiveContent
+
 function MyDiaryDetail() {
   const { id } = useParams();
   // happy: rất vui, great: vui, normal: bình thường, sad: buồn, upset: rất buồn
@@ -38,27 +44,52 @@ function MyDiaryDetail() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                fontFamily: "Roboto",
               }}
             >
               <Stack
+                direction={"row"}
                 sx={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Typography
-                  sx={{
-                    fontFamily: "Dancing Script",
-                    fontSize: "80px",
-                    lineHeight: "100px",
-                  }}
-                >
-                  Nhật ký của tôi
-                </Typography>
-                <Typography> {diary.title}</Typography>
-                <Typography>{diary.date}</Typography>
+                <Stack>
+                  <Typography
+                    sx={{
+                      ...responsiveContent,
+                      fontFamily: "Dancing Script",
+                      fontSize: "90px",
+                      fontWeight: "400",
+
+                      // lineHeight: "100px",
+                    }}
+                  >
+                    {diary.author === "me"
+                      ? "Nhật ký của tôi"
+                      : `Nhật ký của ${diary.author}`}
+                  </Typography>
+
+                  <Typography sx={{ ...responsiveContent, fontWeight: "700" }}>
+                    {diary.title}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      ...responsiveContent,
+                      color: "#7234C2",
+                      fontWeight: "500",
+                    }}
+                  >
+                    {diary.date}
+                  </Typography>
+                </Stack>
+                <Stack>
+                  <Img alt="girl reads book" src={girlReads} />
+                </Stack>
               </Stack>
+
               <ContentBox title={diary.title} content={diary.content} />
             </Stack>
           ))}
