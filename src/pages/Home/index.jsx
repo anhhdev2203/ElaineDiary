@@ -9,129 +9,133 @@ import taonhatki from "../../assets/image/taonhatki.jpg";
 import thongke from "../../assets/image/thongke.jpg";
 import traodoinhatki from "../../assets/image/traodoinhatki.jpg";
 import { styled } from "@mui/material/styles";
-const CardItem = styled (Card) ({
+
+const Title = styled(Typography)({
+  color: "#D069B3",
+  fontFamily: " Dancing Script",
+  fontSize: "90px",
+  fontStyle: "normal",
+  fontWeight: 700,
+  lineHeight: "normal",
+  display: "flex",
+  justifyContent: "center",
+  alignSelf: "center",
+  textAlign: "center",
+  paddingBottom: "36px"
+});
+
+const Text = styled(Typography)({
+  color: "#000",
+  fontSize: "36px",
+  fontStyle: "normal",
+  fontweight: 300,
+  lineHeight: "normal",
+  padding: "50px",
+  width: "619px",
+  display: "flex",
+  alignSelf: "center",
+  textAlign: "center",
+});
+const ButtonItem = styled(Button)({
+  borderRadius: "50px",
+  backgroundColor: "#EFB49599",
+  width: "300px",
+  height: "42px",
+  display: "flex",
+  alignSelf: "center",
+  marginBottom: "16px",
+  marginTop: "16px",
+});
+const CardItem = styled(Card)({
   width: "380px",
-  //height: "216px",
+  height : "380px",
   backgroundColor: "#E6F6CB",
   borderRadius: "25.967px",
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
-
 });
-const buttonText = styled(Typography)({
-  color:" #79AC78",
-  fontFamily: "Roboto",
-  fontSize: "32px",
+const ButtonText = styled(Typography)({
+  color: "#79AC78",
+  formFamily: "Roboto",
+  fontSize: "24px",
   fontStyle: "normal",
   fontWeight: 700,
   lineHeight: "normal",
-  padding: "8px"
+  borderRadius: "8px",
 });
 function Home() {
   return (
     <Box
       sx={{
-        width: "100vw",
-        height: "100vw",
+        // width: "100vw",
+        //height: "100vw",
         background: "#F5CFCF",
-        paddingTop: "111px",
+        paddingTop: "90px",
+        paddingBottom: "50px"
       }}
     >
       <Container maxWidth="xl">
-        <Typography
-          sx={{
-            color: "#D069B3",
-            fontFamily: "Dancing Script",
-            fontSize: "90px",
-            fontStyle: "normal",
-            fontWeight: 700,
-            lineHeight: "normal",
-            paddingBottom: "56px",
-          }}
-        >
-          {" "}
-          Trang chủ
-        </Typography>
-        <Stack>
-          <Stack display="flex " flexDirection="row" gap="55px" justifyContent= "center">
-            
-            <CardItem
-             
-            >
-              <CardMedia component="img" image={taonhatki}  />
-              <Button sx={{
-                  backgroundColor: "#EFB49599",
-                  display: "flex",
-                  alignSelf: "center",
-                }}><buttonText>Tạo nhật kí</buttonText></Button>
+        <Title>Trang chủ</Title>
+        <Stack display="flex "
+            flexDirection="column"
+            //gap="55px"
+            justifyContent="space-around"
+            marginLeft="95px"
+            marginRight="95px">
+          <Stack
+            display="flex "
+            flexDirection="row"
+            gap="55px"
+            justifyContent="center"
+          >
+            <CardItem >
+              <CardMedia sx ={{height: "320px"}}component="img" image={taonhatki} />
+              <ButtonItem>
+                <ButtonText>Tạo nhật kí</ButtonText>
+              </ButtonItem>
             </CardItem>
-            <CardItem
-            >
+            <CardItem>
               <CardMedia
-                sx={{ MozBorderRadiusTopleft: "25.967px" }}
+                sx ={{height: "320px"}}
                 component="img"
                 image={luutru}
               />
-              <Button sx={{
-                  backgroundColor: "#EFB49599",
-                  display: "flex",
-                  alignSelf: "center",
-                }}><buttonText>Lưu trữ</buttonText></Button>
+              <ButtonItem>
+                <ButtonText>Lưu trữ</ButtonText>
+              </ButtonItem>
             </CardItem>
-            <CardItem
-            >
-              <CardMedia component="img" image={nhatkiluutru} />
-              <Button
-                sx={{
-                  backgroundColor: "#EFB49599",
-                  display: "flex",
-                  alignSelf: "center",
-                }}
-              >
-                <buttonText>Nhật kí đáng nhớ</buttonText>
-              </Button>
+            <CardItem>
+              <CardMedia sx ={{height: "320px"}} component="img" image={nhatkiluutru} />
+              <ButtonItem>
+                <ButtonText>Nhật kí đáng nhớ</ButtonText>
+              </ButtonItem>
             </CardItem>
           </Stack>
 
-          <Typography
-            sx={{
-              color: "#000",
-              fontFamily: "Roboto",
-              fontSize: "36px",
-              fontStyle: "normal",
-              fontweight: 300,
-              lineHeight: "normal",
-              padding: "50px",
-              width: "600px",
-              display :"flex",
-              alignSelf: "center",
-              textAlign: "center"
-            }}
-          >
+          <Text>
             “Cuộc sống xô bồ cũng đừng quên dành thời gian cho bản thân nhé!”
-          </Typography>
+          </Text>
 
-          <Stack display="flex " flexDirection="row" gap="55px" justifyContent="center">
-            <CardItem
-            >
-              <CardMedia component="img" image={traodoinhatki} />
-              <Button sx={{
-                  backgroundColor: "#EFB49599",
-                  display: "flex",
-                  alignSelf: "center",
-                }}><buttonText>Trao đổi nhật kí</buttonText></Button>
+          <Stack
+            display="flex "
+            flexDirection="row"
+            gap="55px"
+            justifyContent="center"
+          >
+            <CardItem>
+              <CardMedia  sx ={{height: "320px"}}component="img" image={traodoinhatki} />
+              <ButtonItem>
+                <ButtonText>Trao đổi nhật kí</ButtonText>
+              </ButtonItem>
             </CardItem>
 
-            <CardItem
-            >
-              <CardMedia component="img" image={thongke} />
-              <Button sx={{
-                  backgroundColor: "#EFB49599",
-                  display: "flex",
-                  alignSelf: "center",
-                }}><buttonText>Thống kê</buttonText></Button>
+            <CardItem>
+              <CardMedia sx ={{height: "320px"}} component="img" image={thongke} />
+              <ButtonItem>
+                <ButtonText>Thống kê</ButtonText>
+              </ButtonItem>
             </CardItem>
           </Stack>
         </Stack>
