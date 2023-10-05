@@ -54,7 +54,7 @@ export const ContentBox = ({ title, content }) => {
         boxShadow: "12px 12px 0px 0px  #30173F",
         backgroundColor: "#C2BCC5",
         borderRadius: "24px",
-        // border: "none",
+        border: "#fff",
 
         // transform: "scale(1)",
         // transition: "transform 0.3s ease-in-out",
@@ -68,16 +68,16 @@ export const ContentBox = ({ title, content }) => {
           direction: "row",
         }}
       >
-        <Container>
-          <ListItemText
-            variant="h5"
-            sx={{
-              mb: 1,
-            }}
-            primary={title}
-          />
+        <Container
+          variant="h5"
+          sx={{
+            mb: 1,
+            ...responsiveContent,
+          }}
+        >
+          {title}
         </Container>
-        <Divider />
+        <Divider sx={{ border: "fff" }} />
 
         <Grid
           container
