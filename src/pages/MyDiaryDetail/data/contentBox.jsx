@@ -4,7 +4,7 @@ import coverImage from "../img/cover.png";
 import feelImage from "../img/HAPPY.png";
 import Grid from "@mui/material/Unstable_Grid2";
 
-const Img = styled("img")({
+export const Img = styled("img")({
   // height: "100%",
   // width: "50%",
   // position: "absolute",
@@ -41,7 +41,8 @@ const responsiveBOX = {
 export const responsiveContent = {
   "@media (max-width: 320px)": {
     //điện thoại
-    fontSize: "0rem",
+
+    fontSize: "1rem",
     backgroundColor: "#C2BCC5",
     display: "none",
   },
@@ -92,12 +93,13 @@ export const ContentBox = ({ title, content }) => {
             fontFamily: "Roboto",
             fontSize: "24px",
             lineHeight: "28px",
-
+            fontWeight: "600",
             ...responsiveContent,
             pt: 4,
             pb: 4,
             m: 0,
             position: "absolutess",
+            color: "#5B3C6D",
           }}
         >
           {title}
@@ -108,6 +110,7 @@ export const ContentBox = ({ title, content }) => {
           container
           spacing={0.5}
           // minHeight={160}
+
           sx={{ position: "relative" }}
         >
           {/* <Grid */}
@@ -119,6 +122,7 @@ export const ContentBox = ({ title, content }) => {
             display="flex"
             justifyContent="center"
             alignItems="flex-start"
+            padding="2%"
           >
             <Typography
               sx={{
@@ -135,7 +139,6 @@ export const ContentBox = ({ title, content }) => {
           <Grid sx={{ display: "flex", alignItems: "flex-end" }}>
             <Img alt="fell" src={feelImage} />
           </Grid>
-          />
           {/* </Grid> */}
         </Grid>
       </Box>
