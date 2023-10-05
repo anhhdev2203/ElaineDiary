@@ -57,10 +57,7 @@
     margin-top: 1px !important;
     font-size: 8px;
     font-family: Be Vietnam Pro;
-    width: 400px;
-    padding-left: 10px;
+    width: 420px;
+    padding-left: 20px !important;
 }
 
-.errorMsg.email{
-    padding-right: 268px;
-}
