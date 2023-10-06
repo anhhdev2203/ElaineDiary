@@ -9,8 +9,10 @@ import PauseRounded from "@mui/icons-material/PauseRounded";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
 import FastForwardRounded from "@mui/icons-material/FastForwardRounded";
 import FastRewindRounded from "@mui/icons-material/FastRewindRounded";
-import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
-import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
+import DownloadIcon from "@mui/icons-material/Download";
+import RepeatIcon from "@mui/icons-material/Repeat";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import ShuffleIcon from "@mui/icons-material/Shuffle";
 
 const Widget = styled("div")(({ theme }) => ({
   padding: 16,
@@ -25,18 +27,18 @@ const Widget = styled("div")(({ theme }) => ({
   backdropFilter: "blur(40px)",
 }));
 
-const CoverImage = styled("div")({
-  width: 100,
-  height: 100,
-  objectFit: "cover",
-  overflow: "hidden",
-  flexShrink: 0,
-  borderRadius: 8,
-  backgroundColor: "rgba(0,0,0,0.08)",
-  "& > img": {
-    width: "100%",
-  },
-});
+// const CoverImage = styled("div")({
+//   width: 100,
+//   height: 100,
+//   objectFit: "cover",
+//   overflow: "hidden",
+//   flexShrink: 0,
+//   borderRadius: 8,
+//   backgroundColor: "rgba(0,0,0,0.08)",
+//   "& > img": {
+//     width: "100%",
+//   },
+// });
 
 const TinyText = styled(Typography)({
   fontSize: "0.75rem",
@@ -55,11 +57,11 @@ export function MusicPlayer() {
     const secondLeft = value - minute * 60;
     return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
   }
-  const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
+  const mainIconColor = "#8966AF";
   const lightIconColor =
     theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
   return (
-    <Box sx={{ width: "100%", overflow: "hidden" }}>
+    <Box sx={{ width: "100%", overflow: "hidden", color: mainIconColor }}>
       <Widget>
         <Box
           sx={{
@@ -101,7 +103,7 @@ export function MusicPlayer() {
           max={duration}
           onChange={(_, value) => setPosition(value)}
           sx={{
-            color: theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
+            color: mainIconColor,
             height: 4,
             "& .MuiSlider-thumb": {
               width: 8,
@@ -111,11 +113,7 @@ export function MusicPlayer() {
                 boxShadow: "0 2px 12px 0 rgba(0,0,0,0.4)",
               },
               "&:hover, &.Mui-focusVisible": {
-                boxShadow: `0px 0px 0px 8px ${
-                  theme.palette.mode === "dark"
-                    ? "rgb(255 255 255 / 16%)"
-                    : "rgb(0 0 0 / 16%)"
-                }`,
+                boxShadow: `0px 0px 0px 8px ${mainIconColor}`,
               },
               "&.Mui-active": {
                 width: 20,
@@ -139,12 +137,20 @@ export function MusicPlayer() {
           <TinyText>-{formatDuration(duration - position)}</TinyText>
         </Box>
         <Stack
-          spacing={2}
+          spacing={5}
           direction="row"
-          sx={{ mb: 1, px: 1 }}
+          sx={{
+            mb: 1,
+            px: 1,
+            justifyContent: "space-evenly",
+          }}
           alignItems="center"
         >
-          <VolumeDownRounded htmlColor={lightIconColor} />
+          <DownloadIcon />
+          <RepeatIcon />
+          <ShuffleIcon />
+          <FormatListBulletedIcon />
+          {/* <VolumeDownRounded htmlColor={lightIconColor} />
           <Slider
             aria-label="Volume"
             defaultValue={30}
@@ -167,7 +173,7 @@ export function MusicPlayer() {
               },
             }}
           />
-          <VolumeUpRounded htmlColor={lightIconColor} />
+          <VolumeUpRounded htmlColor={lightIconColor} /> */}
         </Stack>
       </Widget>
     </Box>
