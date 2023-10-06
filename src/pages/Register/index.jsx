@@ -41,7 +41,7 @@ function Register() {
     // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
     const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
     if (isEmpty(account.username)) {
-      msg.username =  "*Bắc buộc"
+      msg.username = "*Bắc buộc"
     }
 
     // if(passwordPattern.test(account.password)){
@@ -52,7 +52,7 @@ function Register() {
     }
 
     if (isEmpty(account.retakepassword)) {
-      msg.retakepassword = "*Tên người dùng bắt buộc"
+      msg.retakepassword = "*Bắt buộc"
     }
 
     if (account.password !== account.retakepassword) {
@@ -62,11 +62,11 @@ function Register() {
     const birthYearPattern = /^(19\d\d|20[01]\d|202[0-3])$/;
 
     if (!birthYearPattern.test(account.birthYear)) {
-      msg.birthYear = "*Năm sinh bắc buộc và từ 1900-2023";
+      msg.birthYear = "*Năm sinh bắc buộc từ 1900-2023";
     }
 
     if (isEmpty(account.password)) {
-      msg.password =  "*Bắc buộc"
+      msg.password = "*Bắc buộc"
     }
     if (isEmpty(account.birthYear)) {
       msg.birthYear = "*Bắc buộc"
@@ -87,6 +87,34 @@ function Register() {
 
   }
   console.log(account);
+  //Style
+  const styleBox = {
+    borderRadius: "24px",
+    width: 400,
+    maxWidth: "80%",
+    marginLeft: "185px",
+    marginTop:"20px",
+    '& .MuiTextField-root': {
+      marginRight: "10% !important",
+      borderRadius: "24px",
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: "black !important",
+      margin: "10px 0 0 10px"// Đổi màu khi label được focus
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: "none", // Đổi màu của border khi input không focus
+      },
+      '&:hover fieldset': {
+        borderColor: 'red', // Đổi màu của border khi hover vào input
+      },
+      '&.Mui-focused fieldset': {
+        border: "none", // Đổi màu của border khi input được focus
+      },
+    },
+  }
+
 
   return (
     <>
@@ -196,17 +224,11 @@ function Register() {
           </Stack>
 
           <Stack direction="column" spacing={2} alignItems="center"
-            sx={{
-              marginTop: "4vh",
-
-            }}
+            sx={styleBox}
           >
 
             <TextField id="outlined-basic" label="Tên người dùng" variant="outlined" size="small"
-              sx={{
-                width: 400,
-                maxWidth: "80%",
-              }}
+              sx={styleBox}
               onChange={(e) => {
                 setAccount({
                   ...account,

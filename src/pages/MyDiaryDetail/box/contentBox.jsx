@@ -1,9 +1,11 @@
-import { Box, Divider, Typography, styled, Container } from "@mui/material";
+import { Box, Divider, Typography, styled, Container, TextField } from "@mui/material";
 import "../img/cover.png";
-import coverImage from "../img/cover.png";
 import feelImage from "../img/HAPPY.png";
 import Grid from "@mui/material/Unstable_Grid2";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { Stack, flexbox } from "@mui/system";
+import cover from "../img/cover.png"
+import './Scrollbar.css'
 
 export const Img = styled("img")({
   // height: "100%",
@@ -76,80 +78,84 @@ export const ContentBox = ({ title, content }) => {
   return (
     <Box
       sx={{
-        border: "#30173F solid 1px",
-        alignItems: "center",
-        boxShadow: "12px 12px 0px 0px  #30173F",
-        backgroundColor: "#ececec",
-        borderRadius: "54px",
-        ...responsiveBOX,
+        width: "800px",
+        height: "280px",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        // transform: "scale(1)",
-        // transition: "transform 0.3s ease-in-out",
-        // "&:hover": {
-        //   transform: "scale(1.1)",
-        // },
-      }}
-    >
-      <Box
-        sx={{
-          direction: "row",
-        }}
-      >
-        <Container
-          variant="h5"
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#E3DDE5",
+        marginTop: "28px",
+        boxShadow: "12px 12px 0px 0px #C2BCC5",
+        border: "1px solid #30173F",
+        borderRadius: "24px",
+      }}>
+      <Stack direction="column" height="100%">
+        <Box
           sx={{
-            fontFamily: "Roboto",
-            fontSize: "24px",
-            lineHeight: "28px",
-            fontWeight: "600",
-            ...responsiveContent,
-            pt: 4,
-            pb: 4,
-            ml: 4,
-            color: "#5B3C6D",
-            overflow: "hidden",
-            position: "relative",
+            height: "10%",
+            width: "780px",
           }}
         >
-          {title}
-        </Container>
-        <Divider sx={{ border: "#30173F solid 1px " }} />
-        <Grid2 container spacing={0.5} minHeight={160}>
-          <Img alt="cover" src={coverImage} />
-          <Grid
-            responsiveBOX
-            xs
-            display="flex"
-            justifyContent="center"
-            alignItems="flex-start"
-            padding="2%"
-            sx={{
-              boxSizing: "border-box",
+          <p
+            style={{
+              color: "#5B3C6D", marginTop: "8px", marginLeft: "12px",
+              fontSize: "14px", fontWeight: "700", fontFamily: "Roboto"
             }}
-          >
-            <Typography
+          >{title}</p>
+        </Box>
+        <hr className="solid"
+          style={{
+            border: "0.5px solid #30173F",
+            marginBottom: "12px"
+          }}></hr>
+        <Stack direction="row">
+          <Box component="img" src={cover} alt="Cover"
+            sx={{
+              width: "6%",
+
+            }}
+          ></Box>
+          <Stack className="content" direction="row" sx={{
+            height: "230px",
+            width: "700px",
+            marginLeft: "30px",
+            overflow: "auto"
+
+          }}>
+            <p
+              style={{
+                fontSize: "12px"
+
+              }}>{content}</p>
+            <Box
+              component="img"
+              src={feelImage}
               sx={{
-                ...responsiveContent,
-                textAlign: " justify",
-                fontFamily: "Roboto",
+                width: "75px",
+                height: "75px",
+                marginTop: "150px"
               }}
-            >
-              {content}
-            </Typography>
-          </Grid>
-          <Grid
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              right: "0",
-            }}
-          >
-            <Img alt="fell" src={feelImage} />
-          </Grid>
-        </Grid2>
-      </Box>
-    </Box>
+            ></Box>
+            
+          </Stack>
+          {/* <Box component="img" src={feelImage} alt="Feel"
+          sx={{
+            position: "absolute",
+            right: "200px",
+            bottom: "150px",
+            width: "75px",
+            height: "75px",
+
+
+          }}
+        ></Box> */}
+        </Stack>
+
+      </Stack>
+
+
+
+
+    </Box >
   );
 };
