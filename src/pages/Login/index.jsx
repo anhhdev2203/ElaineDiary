@@ -129,7 +129,7 @@ function Login() {
             sx={{
               width: "100%",
               marginBottom: "8vh",
-              marginTop: "20vh",
+              marginTop: "16vh",
 
             }}>
             <Typography
@@ -139,7 +139,7 @@ function Login() {
                 textAlign: "center",
                 lineHeight: "normal",
                 fontWeight: 400,
-                fontSize: 64,
+                fontSize: 60,
 
 
               }}
@@ -177,7 +177,7 @@ function Login() {
               width:"60%" // Đặt border-radius theo ý muốn
             }}
             />
-            <p className='errorMsg'>{msgValidation.username}</p>
+            <p className='errorMsgLogin'>{msgValidation.username}</p>
 
             <TextField id="outlined-password-input"
               label="Mật khẩu"
@@ -195,7 +195,7 @@ function Login() {
               width:"60%"
             }}
             />
-            <p className='errorMsg'>{msgValidation.password}</p>
+            <p className='errorMsgLogin'>{msgValidation.password}</p>
 
             <Button variant="contained" onClick={handleLogin} className='buttonLogin'
               sx={{

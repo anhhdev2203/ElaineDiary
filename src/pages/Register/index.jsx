@@ -213,6 +213,9 @@ function Register() {
                   username: e.target.value,
                 })
               }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
+              }}
             />
             <p className='errorMsg'>{msgValidation.username}</p>
 
@@ -220,6 +223,9 @@ function Register() {
               sx={{
                 width: 400,
                 maxWidth: "80%"
+              }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
               }}
               onChange={(e) => {
                 setAccount({
@@ -245,6 +251,9 @@ function Register() {
                 width: 400,
                 maxWidth: "80%"
               }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
+              }}
             />
             <p className='errorMsg'>{msgValidation.password}</p>
 
@@ -262,6 +271,9 @@ function Register() {
                   ...account,
                   retakepassword: e.target.value,
                 })
+              }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
               }}
             />
             <p className='errorMsg'>{msgValidation.retakepassword}</p>

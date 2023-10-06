@@ -87,13 +87,10 @@
 }
 
 
-.errorMsg {
+.errorMsgLogin {
   color: #cc0000;
-  top: 0;
-  padding-right: 250px;
   margin-top: 1px !important;
   font-size: 8px;
   font-family: Be Vietnam Pro;
-  width: 400px;
-  padding-left: 45px !important;
+  padding-right: 200px !important;
 }
