@@ -42,7 +42,7 @@ function MyDiaryDetail() {
                 minWidth: "100vw",
                 minHeight: "100vh",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "flex-start",
                 alignItems: "center",
                 fontFamily: "Roboto",
                 flexDirection: "column",
@@ -68,6 +68,7 @@ function MyDiaryDetail() {
                     align="center"
                     color="text.primary"
                     sx={{
+                      fontSize: "80px",
                       fontFamily: "Dancing Script",
                       "@media (max-width: 320px)": {
                         fontSize: "100px",
@@ -78,11 +79,12 @@ function MyDiaryDetail() {
                       "@media (min-width: 992px) and(max-width: 1800px)": {
                         fontSize: "100px",
                       },
-                      "@media (min-width: 1800px)and (max-width: 2800px)": {
-                        fontSize: "150px",
+
+                      "@media (min-width: 1800px)and (max-width: 2600px)": {
+                        fontSize: "100px",
                       },
-                      "@media (min-width: 2800px)": {
-                        fontSize: "300px",
+                      "@media (min-width: 2600px)": {
+                        fontSize: "150px",
                       },
                     }}
                   >
@@ -121,13 +123,17 @@ function MyDiaryDetail() {
                         width: "224px",
                         height: "224px",
                       },
-                      "@media (min-width: 992px) and(max-width: 1824px)": {
-                        width: "100px",
-                        height: "100px",
+                      "@media (min-width: 992px) and(max-width: 1500px)": {
+                        width: "200px",
+                        height: "200px",
                       },
-                      "@media (min-width: 1824px)and (max-width: 2800px)": {
-                        width: "300px",
-                        height: "300px",
+                      "@media (min-width: 1500px)and (max-width: 1800px)": {
+                        width: "200px",
+                        height: "200px",
+                      },
+                      "@media (min-width: 1800px)and (max-width: 2800px)": {
+                        width: "250px",
+                        height: "250px",
                       },
                       "@media (min-width: 2800px)": {
                         width: "500px",

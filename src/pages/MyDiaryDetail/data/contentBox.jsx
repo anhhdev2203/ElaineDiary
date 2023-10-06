@@ -1,11 +1,4 @@
-import {
-  Box,
-  Divider,
-  Typography,
-  styled,
-  Container,
-  Dialog,
-} from "@mui/material";
+import { Box, Divider, Typography, styled, Container } from "@mui/material";
 import "../img/cover.png";
 import coverImage from "../img/cover.png";
 import feelImage from "../img/HAPPY.png";
@@ -29,33 +22,30 @@ const responsiveBOX = {
     left: "190px",
   },
   "@media (min-width: 320px) and (max-width: 768px)": {
-    height: "480px",
+    height: "300px",
 
     top: "150px",
     left: "190px",
   },
   "@media (min-width: 768px) and (max-width: 992px)": {
-    height: "480px",
-    top: "150px",
-    left: "190px",
+    height: "300px",
   },
-  "@media (min-width: 992px) and(max-width: 1800px)": {
-    height: "480px",
-    top: "150px",
-    left: "190px",
-    borderRadius: "24px",
-    border: "1px",
+  "@media (min-width: 992px) and(max-width: 1500px)": {
+    height: "300px",
   },
-  "@media (min-width: 1800px)and (max-width: 2800px)": {
-    height: "480px",
-
-    top: "150px",
-    left: "190px",
-    borderRadius: "24px",
-    border: "1px",
+  "@media (min-width: 1500px) and(max-width: 1800px)": {
+    height: "200px",
+  },
+  "@media (min-width: 1800px)and (max-width: 2600px)": {
+    height: "450px",
+  },
+  "@media (min-width: 2600px)and (max-width: 2800px)": {
+    height: "600px",
+    // top: "150px",
+    // left: "190px",
   },
   "@media (min-width: 2800px)": {
-    height: "1400px",
+    height: "900px",
     // top: "150px",
     // left: "190px",
   },
@@ -63,19 +53,19 @@ const responsiveBOX = {
 
 export const responsiveContent = {
   "@media (max-width: 320px)": {
-    fontSize: "0rem", // 0.5 times the base font size
+    fontSize: "0rem",
   },
-  "@media (min-width: 320px) and (max-width: 768px)": {
-    fontSize: "0.5rem", // 1 times the base font size
+  "@media (min-width: 320px) and (max-width: 992px)": {
+    fontSize: "0.5rem",
   },
-  "@media (min-width: 768px) and (max-width: 992px)": {
-    fontSize: "0.5rem", // 0.5 times the base font size
-  },
+  // "@media (min-width: 768px) and (max-width: 992px)": {
+  //   fontSize: "0.5rem",
+  // },
   "@media (min-width: 992px) and(max-width: 1800px)": {
-    fontSize: "1rem", // 2 times the base font size
+    fontSize: "1rem",
   },
   "@media (min-width: 1800px)and (max-width: 2800px)": {
-    fontSize: "2rem", // 2 times the base font size
+    fontSize: "1.5rem",
   },
   "@media (min-width: 2800px)": {
     fontSize: "3rem",
@@ -123,17 +113,6 @@ export const ContentBox = ({ title, content }) => {
             position: "relative",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              width: "10px", // Chiều rộng của thanh cuộn tùy chỉnh
-              height: "100%",
-              background: `url('path_to_your_custom_scrollbar_image.png')`, // Đường dẫn đến hình ảnh thanh cuộn
-              backgroundSize: "cover",
-            }}
-          ></div>
           {title}
         </Container>
         <Divider sx={{ border: "#30173F solid 1px " }} />
@@ -151,7 +130,6 @@ export const ContentBox = ({ title, content }) => {
             }}
           >
             <Typography
-              variant="body1"
               sx={{
                 ...responsiveContent,
                 textAlign: " justify",
