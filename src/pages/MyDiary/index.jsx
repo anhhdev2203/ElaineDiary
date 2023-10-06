@@ -1,21 +1,26 @@
 import { Link } from "react-router-dom";
+import { StoreBox } from "./box/storeBox";
+import { Stack, Box, Typography, styled } from "@mui/material";
 
 function mydiary() {
   return (
-    <div>
-      <Link to={"1"}>
-        <button>1</button>
-      </Link>
-      <Link to={"2"}>
-        <button>2</button>
-      </Link>
-      <Link to={"3"}>
-        <button>3</button>
-      </Link>
-      <Link to={"4"}>
-        <button>4</button>
-      </Link>
-    </div>
+    <>
+      <Stack
+        direction={"column"}
+        sx={{
+          paddingTop: "111px",
+          minWidth: "100vw",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          fontFamily: "Roboto",
+          flexDirection: "column",
+        }}
+      >
+        <StoreBox />
+      </Stack>
+    </>
   );
 }
 
