@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import MemorableDiary from "./pages/MemorableDiary";
 import EditInfo from "./pages/EditInfo";
 import Header from "./pages/Header";
+
 function App() {
   const location = useLocation();
 
