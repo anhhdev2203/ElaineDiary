@@ -5,61 +5,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-/* Chỉnh kích thước của textfield */
-/* .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
-    border-radius: 24px !important;
-  } */
-/*   
-  .css-1r3l2sf-MuiStack-root{
-    margin-right: 32vh;
   
-    margin-left: 32vh !important;
-  }
-   */
-/* textField username and password */
+}
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  background-color: #EFC2C2 !important;
-  border-radius: 24px !important;
   height: 1rem !important;
   /* width: 286px !important; */
   padding: 20px 14px !important;
 }
 
-.css-ihj99v-MuiStack-root {
-  /* width: 100% !important; */
-}
-
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-  width: 60%;
-  margin-right: 10% !important;
-
-}
-
-/* Chỉnh font khi nhập text */
-.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-  color: #000 !important;
-  border: none;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-/* Chỉnh màu khi nhập text */
-/* .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  background-color: #e8f0fe !important;
-} */
-
-
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  border: none;
-}
-
 /* label tên người dùng và mật khẩu */
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-  color: #000 !important;
-  font-size: "Inter";
-}
+
 
 /* Nút đăng nhập */
 .css-1engchi-MuiButtonBase-root-MuiButton-root {
@@ -82,17 +37,15 @@
   font-family: 'Be Vietnam Pro';
   font-size: 12px;
   font-weight: bold;
+  color: #5D579A;
 
 }
 
 
-.errorMsg {
+.errorMsgLogin {
   color: #cc0000;
-  top: 0;
-  padding-right: 250px;
   margin-top: 1px !important;
   font-size: 8px;
   font-family: Be Vietnam Pro;
-  width: 400px;
-  padding-left: 45px !important;
+  padding-right: 200px !important;
 }

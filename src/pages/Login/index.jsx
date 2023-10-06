@@ -74,6 +74,33 @@ function Login() {
   }
 
   console.log(account);
+  //Style textField
+  const styleBox = {
+    borderRadius: "24px",
+    backgroundColor: " #EFC2C2",
+    width: "60%",
+    '& .MuiTextField-root': {
+      marginRight: "10% !important",
+      borderRadius: "24px",
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: "black !important", 
+      margin: "10px 0 0 10px"// Đổi màu khi label được focus
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: "none", // Đổi màu của border khi input không focus
+      },
+      '&:hover fieldset': {
+        borderColor: '#5D579A', // Đổi màu của border khi hover vào input
+      },
+      '&.Mui-focused fieldset': {
+        border: "none", // Đổi màu của border khi input được focus
+      },
+    },
+
+    
+  }
 
   return (
     <>
@@ -84,6 +111,7 @@ function Login() {
             padding: 0;
             overflow: hidden;
             height: 100%;
+            border: "none"
           }
         `}
       </style>
@@ -129,7 +157,7 @@ function Login() {
             sx={{
               width: "100%",
               marginBottom: "8vh",
-              marginTop: "20vh",
+              marginTop: "16vh",
 
             }}>
             <Typography
@@ -139,7 +167,7 @@ function Login() {
                 textAlign: "center",
                 lineHeight: "normal",
                 fontWeight: 400,
-                fontSize: 64,
+                fontSize: 60,
 
 
               }}
@@ -172,12 +200,9 @@ function Login() {
                 username: e.target.value,
               })
             }}
-            sx={{
-              borderRadius: '20px',
-              width:"60%" // Đặt border-radius theo ý muốn
-            }}
+            sx={styleBox}
             />
-            <p className='errorMsg'>{msgValidation.username}</p>
+            <p className='errorMsgLogin'>{msgValidation.username}</p>
 
             <TextField id="outlined-password-input"
               label="Mật khẩu"
@@ -191,11 +216,9 @@ function Login() {
               })
               
             }}
-            sx={{
-              width:"60%"
-            }}
+            sx={styleBox}
             />
-            <p className='errorMsg'>{msgValidation.password}</p>
+            <p className='errorMsgLogin'>{msgValidation.password}</p>
 
             <Button variant="contained" onClick={handleLogin} className='buttonLogin'
               sx={{
