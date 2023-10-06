@@ -1,5 +1,30 @@
-import React from "react";
-// Phần nhạc
-export const MusicBox = () => {
-  return <div style={{ backgroundColor: "red" }}>MusicBox</div>;
+import * as React from "react";
+import recordMusic from "../img/recordMusic.png";
+import { Img } from "./contentBox";
+import { MusicPlayer } from "./musicPlayer";
+import { Box } from "@mui/material";
+const MusicBox = () => {
+  return (
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignContent: "center",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "844px",
+          height: "164px",
+          // top: 860px
+          // left: 298px
+          // border-radius: 50px, 50px, 0px, 0px
+          // opacity: 0.5px
+        }}
+      >
+        <Img alt="headphone" src={recordMusic} />
+        <MusicPlayer />
+      </Box>
+    </>
+  );
 };
+export default MusicBox;
