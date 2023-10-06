@@ -18,14 +18,9 @@ const responsiveBOX = {
 
   "@media (max-width: 320px)": {
     height: "480px",
-    top: "150px",
-    left: "190px",
   },
   "@media (min-width: 320px) and (max-width: 768px)": {
     height: "300px",
-
-    top: "150px",
-    left: "190px",
   },
   "@media (min-width: 768px) and (max-width: 992px)": {
     height: "300px",
@@ -85,6 +80,7 @@ export const ContentBox = ({ title, content }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
+        overflow: "hidden",
         // transform: "scale(1)",
         // transition: "transform 0.3s ease-in-out",
         // "&:hover": {

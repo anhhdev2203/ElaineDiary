@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
 import { ContentBox, Img } from "./box/contentBox";
-// import { MusicBox } from "./box/musicBox";
+import { MusicBox } from "./box/musicBox";
 
 import "./myDiaryDetail.css";
 import { responsiveContent } from "./box/contentBox";
@@ -155,7 +155,7 @@ function MyDiaryDetail() {
                 }}
               >
                 <ContentBox title={diary.title} content={diary.content} />
-                {/* <MusicBox /> */}
+                <MusicBox />
               </Stack>
             </Stack>
           ))}
