@@ -2,9 +2,11 @@ import { Stack, Box, Typography, styled } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
-import { ContentBox, Img } from "./data/contentBox";
+import { ContentBox, Img } from "./box/contentBox";
+import { MusicBox } from "./box/musicBox";
+
 import "./myDiaryDetail.css";
-import { responsiveContent } from "./data/contentBox";
+import { responsiveContent } from "./box/contentBox";
 
 import girlReads from "./img/readBook.png";
 
@@ -145,7 +147,16 @@ function MyDiaryDetail() {
                   />
                 </Stack>
               </Stack>
-              <ContentBox title={diary.title} content={diary.content} />
+              <Stack
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <ContentBox title={diary.title} content={diary.content} />
+                <MusicBox />
+              </Stack>
             </Stack>
           ))}
       </Stack>
