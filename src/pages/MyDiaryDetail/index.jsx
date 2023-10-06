@@ -41,6 +41,7 @@ function MyDiaryDetail() {
       <Stack direction={"column"}
         sx={{
           // paddingTop: "111px" 
+          marginBottom:"12px!impo"
         }}>
         {dinaryList
           .filter((diary) => diary.id === id)
@@ -187,6 +188,8 @@ function MyDiaryDetail() {
                   alt="girl reads book"
                   src={girlReads}
                 />
+                <ContentBox title={diary.title} content={diary.content} />
+
               </Stack>
               <Stack
                 sx={{
@@ -195,8 +198,8 @@ function MyDiaryDetail() {
                   alignItems: "center",
                 }}
               >
-                <ContentBox title={diary.title} content={diary.content} />
-                <MusicBox />
+                                <MusicBox />
+                
               </Stack>
             </Stack>
           ))}

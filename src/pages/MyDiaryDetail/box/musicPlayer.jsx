@@ -15,12 +15,15 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 
 const Widget = styled("div")(({ theme }) => ({
-  padding: 16,
-  borderRadius: 16,
+  padding: 12,
+  borderRadius: "50px 50px 0 0",
   // width: 343,
   maxWidth: "100%",
+  width:"750px",
+  height:"135px",
   margin: "auto",
   position: "relative",
+  marginTop:35,
   zIndex: 1,
   backgroundColor:
     theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",

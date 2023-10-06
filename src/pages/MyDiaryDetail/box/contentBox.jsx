@@ -79,8 +79,7 @@ export const ContentBox = ({ title, content }) => {
     <Box
       sx={{
         width: "800px",
-        height: "280px",
-        display: "flex",
+        height: "200px",
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#E3DDE5",
@@ -88,8 +87,10 @@ export const ContentBox = ({ title, content }) => {
         boxShadow: "12px 12px 0px 0px #C2BCC5",
         border: "1px solid #30173F",
         borderRadius: "24px",
+        marginBottom:"10px",
+
       }}>
-      <Stack direction="column" height="100%">
+      <Stack direction="column" height="90%">
         <Box
           sx={{
             height: "10%",
@@ -98,8 +99,8 @@ export const ContentBox = ({ title, content }) => {
         >
           <p
             style={{
-              color: "#5B3C6D", marginTop: "8px", marginLeft: "12px",
-              fontSize: "14px", fontWeight: "700", fontFamily: "Roboto"
+              color: "#5B3C6D", marginTop: "2px", marginLeft: "12px",
+              fontSize: "12px", fontWeight: "700", fontFamily: "Roboto"
             }}
           >{title}</p>
         </Box>
@@ -111,12 +112,14 @@ export const ContentBox = ({ title, content }) => {
         <Stack direction="row">
           <Box component="img" src={cover} alt="Cover"
             sx={{
-              width: "6%",
+              width: "25px",
+              height:"150px"
+
 
             }}
           ></Box>
           <Stack className="content" direction="row" sx={{
-            height: "230px",
+            height: "150px",
             width: "700px",
             marginLeft: "30px",
             overflow: "auto"
@@ -133,22 +136,11 @@ export const ContentBox = ({ title, content }) => {
               sx={{
                 width: "75px",
                 height: "75px",
-                marginTop: "150px"
+                marginTop: "100px"
               }}
             ></Box>
             
           </Stack>
-          {/* <Box component="img" src={feelImage} alt="Feel"
-          sx={{
-            position: "absolute",
-            right: "200px",
-            bottom: "150px",
-            width: "75px",
-            height: "75px",
-
-
-          }}
-        ></Box> */}
         </Stack>
 
       </Stack>
