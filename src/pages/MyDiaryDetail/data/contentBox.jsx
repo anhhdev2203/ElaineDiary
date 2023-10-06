@@ -1,8 +1,16 @@
-import { Box, Divider, Typography, styled, Container } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Typography,
+  styled,
+  Container,
+  Dialog,
+} from "@mui/material";
 import "../img/cover.png";
 import coverImage from "../img/cover.png";
 import feelImage from "../img/HAPPY.png";
 import Grid from "@mui/material/Unstable_Grid2";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 export const Img = styled("img")({
   // height: "100%",
@@ -12,55 +20,65 @@ export const Img = styled("img")({
   left: 0,
 });
 const responsiveBOX = {
-  backgroundColor: "#C5ABC6",
+  width: "80%",
+  height: "480px",
+
   "@media (max-width: 320px)": {
-    //điện thoại
+    height: "480px",
+    top: "150px",
+    left: "190px",
   },
-  "@media (min-width: 320px,max-width: 768px)": {
-    //may tinh bảng nhỏ
-    fontSize: "1rem",
-    backgroundColor: "#black",
+  "@media (min-width: 320px) and (max-width: 768px)": {
+    height: "480px",
+
+    top: "150px",
+    left: "190px",
   },
-  "@media (min-width: 768px,max-width: 992px)": {
-    //may tinh bang lon
-    fontSize: "0.5rem",
-    backgroundColor: "#black",
+  "@media (min-width: 768px) and (max-width: 992px)": {
+    height: "480px",
+    top: "150px",
+    left: "190px",
   },
-  "@media (min-width: 992px,max-width: 1200px)": {
-    //may tinh thong thuong
-    fontSize: "1rem",
-    backgroundColor: "#red",
+  "@media (min-width: 992px) and(max-width: 1800px)": {
+    height: "480px",
+    top: "150px",
+    left: "190px",
+    borderRadius: "24px",
+    border: "1px",
   },
-  "@media (min-width: 1200px)": {
-    //lap top to
-    Width: "10%",
-    Height: "10%",
+  "@media (min-width: 1800px)and (max-width: 2800px)": {
+    height: "480px",
+
+    top: "150px",
+    left: "190px",
+    borderRadius: "24px",
+    border: "1px",
+  },
+  "@media (min-width: 2800px)": {
+    height: "1400px",
+    // top: "150px",
+    // left: "190px",
   },
 };
 
 export const responsiveContent = {
   "@media (max-width: 320px)": {
-    //điện thoại
-
-    fontSize: "1rem",
-    backgroundColor: "#C2BCC5",
-    display: "none",
+    fontSize: "0rem", // 0.5 times the base font size
   },
-  "@media (min-width: 320px,max-width: 768px)": {
-    //may tinh bảng nhỏ
-    fontSize: "1rem",
+  "@media (min-width: 320px) and (max-width: 768px)": {
+    fontSize: "0.5rem", // 1 times the base font size
   },
-  "@media (min-width: 768px,max-width: 992px)": {
-    //may tinh bang lon
-    fontSize: "0.5rem",
+  "@media (min-width: 768px) and (max-width: 992px)": {
+    fontSize: "0.5rem", // 0.5 times the base font size
   },
-  "@media (min-width: 992px,max-width: 1200px)": {
-    //may tinh thong thuong
-    fontSize: "1rem",
+  "@media (min-width: 992px) and(max-width: 1800px)": {
+    fontSize: "1rem", // 2 times the base font size
   },
-  "@media (min-width: 1200px)": {
-    //lap top to
-    fontSize: "2.5rem",
+  "@media (min-width: 1800px)and (max-width: 2800px)": {
+    fontSize: "2rem", // 2 times the base font size
+  },
+  "@media (min-width: 2800px)": {
+    fontSize: "3rem",
   },
 };
 
@@ -68,13 +86,15 @@ export const ContentBox = ({ title, content }) => {
   return (
     <Box
       sx={{
-        display: "flex",
+        border: "#30173F solid 1px",
         alignItems: "center",
-        maxWidth: "80%",
         boxShadow: "12px 12px 0px 0px  #30173F",
         backgroundColor: "#ececec",
         borderRadius: "54px",
         ...responsiveBOX,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
         // transform: "scale(1)",
         // transition: "transform 0.3s ease-in-out",
         // "&:hover": {
@@ -97,50 +117,60 @@ export const ContentBox = ({ title, content }) => {
             ...responsiveContent,
             pt: 4,
             pb: 4,
-            m: 0,
-            position: "absolutess",
+            ml: 4,
             color: "#5B3C6D",
+            overflow: "hidden",
+            position: "relative",
           }}
         >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "10px", // Chiều rộng của thanh cuộn tùy chỉnh
+              height: "100%",
+              background: `url('path_to_your_custom_scrollbar_image.png')`, // Đường dẫn đến hình ảnh thanh cuộn
+              backgroundSize: "cover",
+            }}
+          ></div>
           {title}
         </Container>
-        <Divider variant="middle" />
-
-        <Grid
-          container
-          spacing={0.5}
-          // minHeight={160}
-
-          sx={{ position: "relative" }}
-        >
-          {/* <Grid */}
-          {/* xs display="flex" justifyContent="space-between" alignItems="center" > */}
+        <Divider sx={{ border: "#30173F solid 1px " }} />
+        <Grid2 container spacing={0.5} minHeight={160}>
           <Img alt="cover" src={coverImage} />
-          {/* </Grid> */}
           <Grid
+            responsiveBOX
             xs
             display="flex"
             justifyContent="center"
             alignItems="flex-start"
             padding="2%"
+            sx={{
+              boxSizing: "border-box",
+            }}
           >
             <Typography
+              variant="body1"
               sx={{
                 ...responsiveContent,
-                // marginLeft: "3%",
-                textAlign: "     justify",
+                textAlign: " justify",
                 fontFamily: "Roboto",
               }}
             >
               {content}
             </Typography>
           </Grid>
-          {/* <Grid xs display="flex" justifyContent="flex-end" alignItems="end"> */}
-          <Grid sx={{ display: "flex", alignItems: "flex-end" }}>
+          <Grid
+            sx={{
+              display: "flex",
+              alignItems: "flex-end",
+              right: "0",
+            }}
+          >
             <Img alt="fell" src={feelImage} />
           </Grid>
-          {/* </Grid> */}
-        </Grid>
+        </Grid2>
       </Box>
     </Box>
   );
