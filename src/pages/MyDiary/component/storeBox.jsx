@@ -9,12 +9,13 @@ import { display, positions } from "@mui/system";
 import "../myDiary.css";
 
 export const Img = styled("img")({
-  width: "150px",
+  width: "148px",
+  height: "114px",
 });
 
 const Item = styled(Paper)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  backgroundColor: "#FFF9BF",
+  backgroundColor: "#f0f4c3",
   ...theme.typography.body3,
   padding: theme.spacing(1),
   textAlign: "center",
@@ -27,7 +28,7 @@ function FormRow() {
     <React.Fragment>
       <Grid item xs={3}>
         <Item>
-          <Img sx={{}} alt="folderStore" src={folderStore} />
+          <Img alt="folderStore" src={folderStore} />
           <Typography>Tiêu đề 1</Typography>
           <Typography>23/09/2923</Typography>
         </Item>

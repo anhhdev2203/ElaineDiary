@@ -109,16 +109,19 @@ export const ContentBox = ({ title, content }) => {
             >
               {content}
             </Typography>
-            <Box
-              component="img"
-              src={feelImage}
-              sx={{
-                width: "75px",
-                height: "75px",
 
-                // marginTop: "100px",
-              }}
-            ></Box>
+            <Box sx={{ position: "sticky", top: "100px" }}>
+              {" "}
+              <Box
+                component="img"
+                src={feelImage}
+                sx={{
+                  width: "75px",
+                  height: "75px",
+                  // marginTop: "100px",
+                }}
+              />
+            </Box>
           </Stack>
         </Stack>
       </Stack>

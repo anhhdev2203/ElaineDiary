@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import { DATASTORE } from "./data/storeDinary";
 import { ContentBox, Img } from "./component/contentBox";
-
-import arrowBack from "./img/arrowBack.svg";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { MusicBox } from "./component/musicBox";
 
@@ -106,17 +105,15 @@ function MyDiaryDetail() {
                   width: "100%",
                 }}
               >
-                <Box
-                  component="img"
-                  src={arrowBack}
-                  alt="ArrowBack"
+                <ArrowBackIcon
                   sx={{
+                    color: "#AE95CE",
                     width: "2%",
                     position: "absolute",
                     top: "72px",
                     left: "24px",
                   }}
-                ></Box>
+                ></ArrowBackIcon>
                 <Stack
                   direction="column"
                   sx={{
