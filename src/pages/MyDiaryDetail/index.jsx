@@ -12,7 +12,7 @@ import { responsiveContent } from "./component/contentBox";
 
 import girlReads from "./img/readBook.png";
 
-function MyDiaryDetail() {
+function MyDiaryDetail({currentUser}) {
   const { id } = useParams();
   // happy: rất vui, great: vui, normal: bình thường, sad: buồn, upset: rất buồn
   const [dinaryList, setDinaryList] = useState(DATASTORE);

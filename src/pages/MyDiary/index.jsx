@@ -18,7 +18,8 @@ const Widget = styled("div")(() => ({
   backgroundColor: "#f0f4c3",
   boxSizing: "border-box",
 }));
-function mydiary() {
+function mydiary({currentUser}) {
+
   return (
     <>
       <Widget>

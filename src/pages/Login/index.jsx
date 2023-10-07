@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Box, Button, Slide, Stack, TextField, Typography } from '@mui/material';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Logo from '../../assets/image/logoSignup.png'
@@ -8,20 +8,19 @@ import '../../App.css'
 import './login.css'
 import isEmpty from "validator/lib/isEmpty"
 import { useState } from 'react'
-import userData from './AccountData/USERS_DATA.json'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import createSlider from './slide';
+import { ACCOUNT_DATA } from '../../data/USERS_DATA';
 
 
-function Login() {
-  const [account, setAccount] = useState({
-    id: "",
-    username: "",
-    birthYear: "",
-    password: ""
-  })
-
+function Login({accountList, currentUser, setCurrentUser}) {
+  // const [account, setAccount] = useState({
+  //   id: "",
+  //   username: "",
+  //   birthYear: "",
+  //   password: ""
+  // })
   // const [accountList, setAccountList] = useState([
   //   {
   //     id: 1,
@@ -36,21 +35,20 @@ function Login() {
 
   //   }
   // ])
-  const [accountList, setAccountList] = useState(userData)
   //Validation
   const [msgValidation, setMsgValidation] = useState('')
 
   const validateAll = () => {
     let msg = {}
-    if (isEmpty(account.username)) {
+    if (isEmpty(currentUser.username)) {
       msg.username = "*Bắt buộc"
     }
-    if (isEmpty(account.password)) {
+    if (isEmpty(currentUser.password)) {
       msg.password = "*Bắt buộc"
     }
 
     const accountExist = accountList.some(
-      (acc) => acc.username === account.username && acc.password === account.password
+      (acc) => acc.username === currentUser.username && acc.password === currentUser.password
     );
 
 
@@ -60,15 +58,21 @@ function Login() {
   }
 
   //Submit
-
+  const navigate = useNavigate()
   const handleLogin = () => {
     const isValid = validateAll()
     if (!isValid) return
-    const accountExist = accountList.some(acc => acc.username === account.username && acc.password === account.password)
-    if (accountExist)
-      return window.location.href = '/'
+    const accountExist = accountList.filter(acc => acc.username === currentUser.username && acc.password === currentUser.password)
+
+    
+    if (accountExist.length === 1){
+      setCurrentUser(accountExist[0])
+      navigate("/")
+
+    }
+      
     //setMsgValidation("Username or Password is incorrect")
-    return toast.error('Username or Password is incorrect', {
+    return toast.error('Tên người dùng hoặc mật khẩu không đúng', {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -85,7 +89,35 @@ function Login() {
 
   }
 
-  console.log(account);
+  // const handleLogin = () => {
+  //   const isValid = validateAll();
+  //   if (!isValid) return;
+  
+  //   const accountIndex = accountList.findIndex(
+  //     (acc) => acc.username === currentUser.username && acc.password === currentUser.password
+  //   );
+  
+  //   if (accountIndex !== -1) {
+  //     // Tài khoản được tìm thấy trong mảng accountList
+  //     // Bạn có thể sử dụng accountIndex ở đây
+  //     navigate("/");
+  //   } else {
+  //     // Tài khoản không tồn tại, hiển thị thông báo lỗi
+  //     toast.error('Tên người dùng hoặc mật khẩu không đúng', {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
+  // };
+  
+
+  console.log(currentUser);
   //Style textField
   const styleBox = {
     borderRadius: "24px",
@@ -207,8 +239,8 @@ function Login() {
           >
             <TextField id="outlined-basic" label="Tên người dùng" variant="outlined"
               onChange={(e) => {
-                setAccount({
-                  ...account,
+                setCurrentUser({
+                  ...currentUser,
                   username: e.target.value,
                 })
               }}
@@ -222,8 +254,8 @@ function Login() {
               autoComplete="off"
               // autoComplete="current-password"
               onChange={(e) => {
-                setAccount({
-                  ...account,
+                setCurrentUser({
+                  ...currentUser,
                   password: e.target.value,
                 })
 
