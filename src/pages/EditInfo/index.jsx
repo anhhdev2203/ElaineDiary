@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EditInfo() {
+function EditInfo({currentUser}) {
   return (
     <div>EditInfo</div>
   )

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./pages/Home";
 import { Route, Routes, useLocation } from "react-router";
 import Login from "./pages/Login";
@@ -11,10 +11,16 @@ import Register from "./pages/Register";
 import MemorableDiary from "./pages/MemorableDiary";
 import EditInfo from "./pages/EditInfo";
 import Header from "./pages/Header";
+import { ACCOUNT_DATA } from "./data/USERS_DATA";
 
 function App() {
   const location = useLocation();
+  // const [number, setNumber] = useState(10)
+  // console.log(number);
+  const [accountList, setAccountList] = useState(ACCOUNT_DATA) 
+  const [currentUser, setCurrentUser] = useState()
 
+  console.log(currentUser);
   return (
     <>
       {location.pathname === "/login" ||
@@ -22,28 +28,28 @@ function App() {
         <Header></Header>
       )}
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/mydiary" element={<MyDiary></MyDiary>}></Route>
+        <Route path="/" element={<Home currentUser={currentUser}></Home>}></Route>
+        <Route path="/login" element={<Login accountList={accountList}  currentUser={currentUser} setCurrentUser={setCurrentUser} ></Login>}></Route>
+        <Route path="/register" element={<Register setAccountList={setAccountList}  accountList={accountList} currentUser={currentUser} setCurrentUser={setCurrentUser}  ></Register>}></Route>
+        <Route path="/mydiary" element={<MyDiary currentUser={currentUser}></MyDiary>}></Route>
         <Route
           path="/mydiary/:id"
-          element={<MyDiaryDetail></MyDiaryDetail>}
+          element={<MyDiaryDetail currentUser={currentUser}></MyDiaryDetail>}
         ></Route>
         <Route
           path="/creatediary"
-          element={<CreateDiary></CreateDiary>}
+          element={<CreateDiary currentUser={currentUser}></CreateDiary>}
         ></Route>
-        <Route path="/chart" element={<Chart></Chart>}></Route>
+        <Route path="/chart" element={<Chart currentUser={currentUser}></Chart>}></Route>
         <Route
           path="/yourdiary"
-          element={<YourDiaryDetail></YourDiaryDetail>}
+          element={<YourDiaryDetail currentUser={currentUser}></YourDiaryDetail>}
         ></Route>
         <Route
           path="/memorablediary"
-          element={<MemorableDiary></MemorableDiary>}
+          element={<MemorableDiary currentUser={currentUser}></MemorableDiary>}
         ></Route>
-        <Route path="/editinfo" element={<EditInfo></EditInfo>}></Route>
+        <Route path="/editinfo" element={<EditInfo currentUser={currentUser}></EditInfo>}></Route>
       </Routes>
     </>
   );

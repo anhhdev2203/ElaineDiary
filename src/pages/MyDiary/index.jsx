@@ -21,7 +21,10 @@ const Widget = styled("div")(() => ({
   backgroundColor: "#f0f4c3",
   boxSizing: "border-box",
 }));
-function MyDiary() {
+
+
+
+function MyDiary({currentUser}) {
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);

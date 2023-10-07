@@ -7,7 +7,7 @@ import HeadsetOutlinedIcon from "@mui/icons-material/HeadsetOutlined";
 import { styled } from "@mui/material/styles";
 import { createTheme } from "@mui/system";
 import { ContentBox } from "../MyDiaryDetail/component/contentBox";
-import { Swiper } from "swiper";
+//mport { Swiper } from "swiper";
 import imgAdd from "../../assets/image/imgImport.png";
 import musicAdd from "../../assets/image/musicImport.png";
 import addBtn from "../../assets/image/addBtn.png";
@@ -69,6 +69,7 @@ const theme = createTheme({
 });
 
 function CreateDiary() {
+
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleDateString();
   return (
@@ -223,7 +224,7 @@ function CreateDiary() {
                     },
                   }}
                 ></InputBase>
-                <Swiper></Swiper>
+                
               </Stack>
             </Stack>
           </Stack>

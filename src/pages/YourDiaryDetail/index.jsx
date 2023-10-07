@@ -1,6 +1,6 @@
 import React from 'react'
 
-function YourDiaryDetail() {
+function YourDiaryDetail({currentUser}) {
   return (
     <div>YourDiaryDetail</div>
   )

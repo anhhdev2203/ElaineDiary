@@ -4,19 +4,9 @@ import Decor from '../../assets/image/decorRegister.png'
 import DecorBook from '../../assets/image/decorBookRegister.png'
 import Label from '../../assets/image/labelRegister.png'
 import './register.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import isEmpty from "validator/lib/isEmpty"
-
-function Register() {
-
-  const [account, setAccount] = useState({
-    id: "",
-    username: "",
-    birthYear: "",
-    password: "",
-    retakepassword: ""
-  })
-  console.log(account);
+function Register({ setAccountList, accountList, currentUser, setCurrentUser }) {
 
   // const [accountList, setAccountList] = useState(() => {
   //   const storageAccount = JSON.parse(localStorage.getItem('account'))
@@ -40,36 +30,41 @@ function Register() {
     const msg = {}
     // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
     const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-    if (isEmpty(account.username)) {
-      msg.username = "*Bắc buộc"
+
+    if (isEmpty(currentUser.username)) {
+      msg.username = "*Bắt buộc"
     }
 
-    // if(passwordPattern.test(account.password)){
+    // if(passwordPattern.test(currentUser.password)){
     //   msg.password = "Password should have at least 8 character and contains at least one uppercase, one lowercase and a number"
     // }
-    if (account.password.length < 8 && account.password.length > 0) {
+    if (currentUser.password.length < 8 && currentUser.password.length > 0) {
       msg.password = "*Độ dài mật khẩu ít nhất 8 chữ số"
     }
 
-    if (isEmpty(account.retakepassword)) {
+    if (isEmpty(currentUser.retakepassword)) {
       msg.retakepassword = "*Bắt buộc"
     }
 
-    if (account.password !== account.retakepassword) {
+    if (currentUser.password !== currentUser.retakepassword) {
       msg.retakepassword = "*Mật khẩu không khớp"
     }
 
     const birthYearPattern = /^(19\d\d|20[01]\d|202[0-3])$/;
 
-    if (!birthYearPattern.test(account.birthYear)) {
-      msg.birthYear = "*Năm sinh bắc buộc từ 1900-2023";
+    if (!birthYearPattern.test(currentUser.birthdayYear)) {
+      msg.birthdayYear = "*Năm sinh bắt buộc từ 1900-2023";
     }
 
-    if (isEmpty(account.password)) {
-      msg.password = "*Bắc buộc"
+    if (isEmpty(currentUser.password)) {
+      msg.password = "*Bắt buộc"
     }
-    if (isEmpty(account.birthYear)) {
-      msg.birthYear = "*Bắc buộc"
+    if (isEmpty(currentUser.birthdayYear)) {
+      msg.birthdayYear = "*Bắt buộc"
+    }
+
+    if (accountList.some(acc => (acc.username === currentUser.username))) {
+      msg.username = "*Tên người dùng bị trùng"
     }
 
 
@@ -80,20 +75,29 @@ function Register() {
   }
 
   //Submit
+  const navigate = useNavigate()
+
   const handleRegister = () => {
     const isValid = validateAll()
     if (!isValid) return
-    return window.location.href = '/'
+    else {
+      setCurrentUser(currentUser)
+      setAccountList(prev => [...prev, currentUser])
+      navigate('/')
+      
+    }
+
+
 
   }
-  console.log(account);
+  console.log(currentUser);
   //Style
   const styleBox = {
     borderRadius: "24px",
     width: 400,
     maxWidth: "80%",
     marginLeft: "185px",
-    marginTop:"20px",
+    marginTop: "20px",
     '& .MuiTextField-root': {
       marginRight: "10% !important",
       borderRadius: "24px",
@@ -202,7 +206,7 @@ function Register() {
               }}
             />
           </Stack>
-          <Stack direction="column" spacing={1} alignItems="center" marginTop="-16vh">
+          <Stack direction="column" spacing={1} alignItems="center" marginTop="-8vh">
             <Typography
               sx={{
                 color: "#fff",
@@ -230,11 +234,12 @@ function Register() {
             <TextField id="outlined-basic" label="Tên người dùng" variant="outlined" size="small"
               sx={styleBox}
               onChange={(e) => {
-                setAccount({
-                  ...account,
+                setCurrentUser({
+                  ...currentUser,
                   username: e.target.value,
                 })
               }}
+              // value={currentUser.username}
               InputProps={{
                 style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
               }}
@@ -250,13 +255,14 @@ function Register() {
                 style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
               }}
               onChange={(e) => {
-                setAccount({
-                  ...account,
-                  birthYear: e.target.value,
+                setCurrentUser({
+                  ...currentUser,
+                  birthdayYear: e.target.value,
                 })
               }}
+              //value={currentUser.birthdayYear}
             />
-            <p className='errorMsg email'>{msgValidation.birthYear}</p>
+            <p className='errorMsg email'>{msgValidation.birthdayYear}</p>
 
 
             <TextField id="outlined-password-input"
@@ -264,11 +270,12 @@ function Register() {
               type="password" size="small"
               // autoComplete="current-password"
               onChange={(e) => {
-                setAccount({
-                  ...account,
+                setCurrentUser({
+                  ...currentUser,
                   password: e.target.value,
                 })
               }}
+              //value={currentUser.password}
               sx={{
                 width: 400,
                 maxWidth: "80%"
@@ -289,11 +296,12 @@ function Register() {
                 maxWidth: "80%"
               }}
               onChange={(e) => {
-                setAccount({
-                  ...account,
+                setCurrentUser({
+                  ...currentUser,
                   retakepassword: e.target.value,
                 })
               }}
+             // value={currentUser.retakepassword}
               InputProps={{
                 style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
               }}

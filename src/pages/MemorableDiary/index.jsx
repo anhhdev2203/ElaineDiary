@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MemorableDiary() {
+function MemorableDiary({currentUser}) {
   return (
     <div>MemorableDiary</div>
   )

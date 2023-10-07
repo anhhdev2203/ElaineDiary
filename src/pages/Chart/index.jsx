@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Chart() {
+function Chart({currentUser}) {
   return (
     <div>Chart</div>
   )

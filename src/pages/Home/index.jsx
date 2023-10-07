@@ -65,7 +65,15 @@ const ButtonText = styled(Typography)({
   lineHeight: "normal",
   borderRadius: "8px",
 });
-function Home() {
+function Home({currentUser}) {
+  console.log(currentUser);
+  if (currentUser) {
+    // Đây là ví dụ, bạn có thể làm gì đó với currentUser tại đây
+    console.log(`Xin chào, ${currentUser.userID}!`);
+  } else {
+    console.log("currentUser là null hoặc undefined");
+  }
+
   return (
     <>
       <Box
