@@ -11,9 +11,6 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import elaine from "../../assets/image/elaine.png";
-import people from "../../assets/image/logochandung.png";
-
-import triangle from "../../assets/image/logotamgiac.png";
 const Con = styled(Container)({
   maxWidth: "1440px",
   width: "100%",
@@ -21,14 +18,15 @@ const Con = styled(Container)({
 function Header() {
   return (
     <>
-      <Box sx={{ width: "100vw", position: "fixed" }}>
+      <Box sx={{ width: "100vw", position: "fixed"}}>
         <Con maxWidth="lg">
           <AppBar
             color="transparent"
             position="static"
-            sx={{ boxShadow: "none" }}
+            sx={{ boxShadow: "none"}}
+            
           >
-            <Toolbar>
+            <Toolbar style = {{ paddingLeft: "0", paddingRight: "0"}}>
               <img
                 src={elaine}
                 alt="Elaine"
