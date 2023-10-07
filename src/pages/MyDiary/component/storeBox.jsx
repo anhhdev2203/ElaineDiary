@@ -14,6 +14,7 @@ export const Img = styled("img")({
 
 const Item = styled(Paper)(({ theme }) => ({
   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  backgroundColor: "#FFF9BF",
   ...theme.typography.body3,
   padding: theme.spacing(1),
   textAlign: "center",

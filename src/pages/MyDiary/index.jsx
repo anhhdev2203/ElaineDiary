@@ -10,14 +10,15 @@ function mydiary() {
       <Stack
         direction={"column"}
         sx={{
-          paddingTop: "111px",
-          minWidth: "100vw",
-          minHeight: "100vh",
+          paddingTop: "  80px;",
+          // minWidth: "100vw",
+          minHeight: "100%",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
           fontFamily: "Roboto",
           flexDirection: "column",
+          backgroundColor: "#FFF9BF",
         }}
       >
         <Stack
@@ -27,37 +28,21 @@ function mydiary() {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
+            position: "relative",
           }}
         >
-          <Box
-            component="img"
-            src={arrowBack}
-            alt="ArrowBack"
-            sx={{
-              width: "2%",
-              position: "absolute",
-              top: "72px",
-              left: "24px",
-            }}
-          />
-          <Box
-            alt="Camera"
-            component="img"
-            src={cameraImg}
-            sx={{
-              // width: "2",
-              position: "absolute",
-              // top: "72px",
-              // left: "24px",
-              width: " 200px",
-              height: " 234.78px",
-              // top: "px",
-              left: "-5px",
-              angle: "28.51 deg",
-            }}
-          />
-
           <Stack>
+            <Box
+              component="img"
+              src={arrowBack}
+              alt="ArrowBack"
+              sx={{
+                width: "2%",
+                position: "absolute",
+                // top: "72px",
+                left: "24px",
+              }}
+            />
             <Typography
               component="h1"
               variant="h6"
@@ -104,6 +89,20 @@ function mydiary() {
             >
               Cùng xem lại Nhật Kí của bạn nào!!!
             </Typography>
+            <Box
+              alt="Camera"
+              component="img"
+              src={cameraImg}
+              sx={{
+                position: "absolute",
+                top: "-80px",
+                // left: "24px",
+                width: " 200px",
+                // height: " 234.78px",
+                left: "20px",
+                angle: "28.51 deg",
+              }}
+            />
           </Stack>
         </Stack>
         <Stack
