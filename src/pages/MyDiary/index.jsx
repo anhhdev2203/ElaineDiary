@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { StoreBox } from "./component/storeBox";
 import { Stack, Box, Typography, styled, Button } from "@mui/material";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import cameraImg from "./img/cameraImg.png";
 import flowerImg from "./img/flowerImg.png";
+import ButtonBox from "./component/buttonBox";
+import Navigation from "./component/navigationBox";
 const Widget = styled("div")(() => ({
   paddingTop: "  80px",
   paddingBottom: "20px",
   minWidth: "100vw",
-  // minHeight: "100vh",
+  minHeight: "100vh",
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
@@ -18,13 +21,14 @@ const Widget = styled("div")(() => ({
   backgroundColor: "#f0f4c3",
   boxSizing: "border-box",
 }));
-function mydiary() {
+function MyDiary() {
+  const [page, setPage] = useState(1);
+  const handlePage = (val) => {
+    setPage(val);
+  };
   return (
     <>
       <Widget>
-        {/* <Link to={"1"}>
-          <button>1</button>
-        </Link> */}
         <Stack direction={"column"}>
           <Stack
             direction={"row"}
@@ -33,17 +37,37 @@ function mydiary() {
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
-              position: "relative",
+              // position: "relative",
             }}
           >
-            <Stack>
-              <ArrowBackIcon
-                sx={{
-                  color: "#EFCC96 ",
-                  position: "absolute",
-                  left: "24px",
-                }}
-              />
+            <ArrowBackIcon
+              sx={{
+                color: "#EFCC96 ",
+                position: "absolute",
+                left: "10px",
+              }}
+            />
+            <Box
+              alt="Camera"
+              component="img"
+              src={cameraImg}
+              sx={{
+                position: "absolute",
+                width: " 128px",
+                height: "148px",
+                top: "100px",
+                rotate: "28.51 deg",
+                left: "2px",
+              }}
+            />
+            <Stack
+              direction={"column"}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Typography
                 component="h1"
                 variant="h6"
@@ -53,26 +77,6 @@ function mydiary() {
                   fontSize: "64px",
                   fontFamily: "Dancing Script",
                 }}
-                // sx={{
-                //   fontSize: "46px",
-                //   fontFamily: "Dancing Script",
-                //   "@media (max-width: 320px)": {
-                //     fontSize: "100px",
-                //   },
-                //   "@media (min-width: 320px) and (max-width: 992px)": {
-                //     fontSize: "60px",
-                //   },
-                //   "@media (min-width: 992px) and(max-width: 1800px)": {
-                //     fontSize: "100px",
-                //   },
-
-                //   "@media (min-width: 1800px)and (max-width: 2600px)": {
-                //     fontSize: "100px",
-                //   },
-                //   "@media (min-width: 2600px)": {
-                //     fontSize: "150px",
-                //   },
-                // }}
               >
                 Kho lưu trữ
               </Typography>
@@ -89,55 +93,49 @@ function mydiary() {
               >
                 Cùng xem lại Nhật Kí của bạn nào!!!
               </Typography>
-              <Box
-                alt="Camera"
-                component="img"
-                src={cameraImg}
-                sx={{
-                  position: "absolute",
-                  top: "-40px",
-                  // left: "24px",
-                  width: " 128px",
-                  height: "148px",
-                  // height: " 234.78px",
-                  left: "20px",
-                  angle: "28.51 deg",
-                }}
-              />
             </Stack>
           </Stack>
+
+          <Stack
+            direction={"column"}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-end",
+              width: "100%",
+              padding: "20px",
+            }}
+          >
+            <StoreBox page={page} />
+          </Stack>
+
           <Stack
             direction={"row"}
             sx={{
               display: "flex",
-              // justifyContent: "center",
-              alignItems: "flex-end",
-              width: "100%",
+              width: "100vw",
             }}
           >
-            <StoreBox />
-            <Box
-              alt="Flower"
-              component="img"
-              src={flowerImg}
-              sx={{
-                // width: "2",
-                // position: "absolute",
-                // top: "72px",
-                // left: "24px",
-                position: "fixed",
-                top: "300px",
-                width: " 200px",
-                bottom: "-1px",
-                right: "-5px",
-                angle: "28.51 deg",
-              }}
-            />
+            <ButtonBox content="Tạo nhật kí mới" />
+            <Navigation page={page} setPage={handlePage} />
           </Stack>
+
+          <Box
+            alt="Flower"
+            component="img"
+            src={flowerImg}
+            sx={{
+              position: "fixed",
+              top: "300px",
+              width: " 200px",
+              bottom: "-1px",
+              right: "-5px",
+            }}
+          />
         </Stack>
       </Widget>
     </>
   );
 }
 
-export default mydiary;
+export default MyDiary;
