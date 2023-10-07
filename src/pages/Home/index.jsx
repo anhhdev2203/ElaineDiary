@@ -31,7 +31,7 @@ const Text = styled(Typography)({
   fontweight: 300,
   lineHeight: "normal",
   padding: "50px",
-  width: "619px",
+  width: "700px",
   display: "flex",
   alignSelf: "center",
   textAlign: "center",
@@ -48,7 +48,7 @@ const ButtonItem = styled(Button)({
 });
 const CardItem = styled(Card)({
   width: "380px",
-  height : "380px",
+  height : "250px",
   backgroundColor: "#E6F6CB",
   borderRadius: "25.967px",
   display: "flex",
@@ -67,7 +67,8 @@ const ButtonText = styled(Typography)({
 });
 function Home() {
   return (
-    <Box
+    <>
+      <Box
       sx={{
         // width: "100vw",
         //height: "100vw",
@@ -91,14 +92,14 @@ function Home() {
             justifyContent="center"
           >
             <CardItem >
-              <CardMedia sx ={{height: "320px"}}component="img" image={taonhatki} />
+              <CardMedia sx ={{height: "70%"}}component="img" image={taonhatki} />
               <ButtonItem>
                 <ButtonText>Tạo nhật kí</ButtonText>
               </ButtonItem>
             </CardItem>
             <CardItem>
               <CardMedia
-                sx ={{height: "320px"}}
+                sx ={{height: "70%"}}
                 component="img"
                 image={luutru}
               />
@@ -107,7 +108,7 @@ function Home() {
               </ButtonItem>
             </CardItem>
             <CardItem>
-              <CardMedia sx ={{height: "320px"}} component="img" image={nhatkiluutru} />
+              <CardMedia sx ={{height: "70%"}} component="img" image={nhatkiluutru} />
               <ButtonItem>
                 <ButtonText>Nhật kí đáng nhớ</ButtonText>
               </ButtonItem>
@@ -125,14 +126,14 @@ function Home() {
             justifyContent="center"
           >
             <CardItem>
-              <CardMedia  sx ={{height: "320px"}}component="img" image={traodoinhatki} />
+              <CardMedia  sx ={{height: "70%"}}component="img" image={traodoinhatki} />
               <ButtonItem>
                 <ButtonText>Trao đổi nhật kí</ButtonText>
               </ButtonItem>
             </CardItem>
 
             <CardItem>
-              <CardMedia sx ={{height: "320px"}} component="img" image={thongke} />
+              <CardMedia sx ={{height: "70%"}} component="img" image={thongke} />
               <ButtonItem>
                 <ButtonText>Thống kê</ButtonText>
               </ButtonItem>
@@ -141,6 +142,7 @@ function Home() {
         </Stack>
       </Container>
     </Box>
+    </>
   );
 }
 

@@ -22,6 +22,9 @@ function mydiary() {
   return (
     <>
       <Widget>
+        {/* <Link to={"1"}>
+          <button>1</button>
+        </Link> */}
         <Stack direction={"column"}>
           <Stack
             direction={"row"}
@@ -47,7 +50,7 @@ function mydiary() {
                 align="center"
                 sx={{
                   color: "#E41B1B",
-                  fontSize: "46px",
+                  fontSize: "64px",
                   fontFamily: "Dancing Script",
                 }}
                 // sx={{
