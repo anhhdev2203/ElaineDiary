@@ -8,7 +8,9 @@ import '../../App.css'
 import './login.css'
 import isEmpty from "validator/lib/isEmpty"
 import { useState } from 'react'
-
+import userData from './AccountData/USERS_DATA.json'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import createSlider from './slide';
 
 
@@ -20,36 +22,37 @@ function Login() {
     password: ""
   })
 
-  const [accountList, setAccountList] = useState([
-    {
-      id: 1,
-      username: "admin",
-      birthYear:"1999",
-      password:"123"
-    },{
-      id: 2,
-      username: "manager",
-      birthYear:"2001",
-      password:"abc"
-      
-    }
-  ])
+  // const [accountList, setAccountList] = useState([
+  //   {
+  //     id: 1,
+  //     username: "admin",
+  //     birthYear:"1999",
+  //     password:"123"
+  //   },{
+  //     id: 2,
+  //     username: "manager",
+  //     birthYear:"2001",
+  //     password:"abc"
+
+  //   }
+  // ])
+  const [accountList, setAccountList] = useState(userData)
   //Validation
   const [msgValidation, setMsgValidation] = useState('')
 
   const validateAll = () => {
     let msg = {}
     if (isEmpty(account.username)) {
-      msg.username = "Username is required"
+      msg.username = "*Bắt buộc"
     }
     if (isEmpty(account.password)) {
-      msg.password = "Password is required"
+      msg.password = "*Bắt buộc"
     }
 
     const accountExist = accountList.some(
       (acc) => acc.username === account.username && acc.password === account.password
     );
-  
+
 
     setMsgValidation(msg)
     if (Object.keys(msg).length > 0) return false
@@ -62,15 +65,24 @@ function Login() {
     const isValid = validateAll()
     if (!isValid) return
     const accountExist = accountList.some(acc => acc.username === account.username && acc.password === account.password)
-    if(accountExist) 
-    return  window.location.href = '/'
-    setMsgValidation("Username or Password is incorrect")
-    return alert("Username or password is incorrect")
-    
+    if (accountExist)
+      return window.location.href = '/'
+    //setMsgValidation("Username or Password is incorrect")
+    return toast.error('Username or Password is incorrect', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
-    
+
+
     // return <Navigate to="/register" replace={true}></Navigate>
-    
+
   }
 
   console.log(account);
@@ -84,7 +96,7 @@ function Login() {
       borderRadius: "24px",
     },
     '& .MuiInputLabel-root.Mui-focused': {
-      color: "black !important", 
+      color: "black !important",
       margin: "10px 0 0 10px"// Đổi màu khi label được focus
     },
     '& .MuiOutlinedInput-root': {
@@ -99,7 +111,7 @@ function Login() {
       },
     },
 
-    
+
   }
 
   return (
@@ -189,18 +201,18 @@ function Login() {
             spacing={2}
             sx={{
               width: "100%",
-              
+
               alignItems: 'center',
             }}
           >
             <TextField id="outlined-basic" label="Tên người dùng" variant="outlined"
-             onChange={(e) => {
-              setAccount({
-                ...account,
-                username: e.target.value,
-              })
-            }}
-            sx={styleBox}
+              onChange={(e) => {
+                setAccount({
+                  ...account,
+                  username: e.target.value,
+                })
+              }}
+              sx={styleBox}
             />
             <p className='errorMsgLogin'>{msgValidation.username}</p>
 
@@ -208,21 +220,21 @@ function Login() {
               label="Mật khẩu"
               type="password"
               autoComplete="off"
-            // autoComplete="current-password"
-            onChange={(e) => {
-              setAccount({
-                ...account,
-                password: e.target.value,
-              })
-              
-            }}
-            sx={styleBox}
+              // autoComplete="current-password"
+              onChange={(e) => {
+                setAccount({
+                  ...account,
+                  password: e.target.value,
+                })
+
+              }}
+              sx={styleBox}
             />
             <p className='errorMsgLogin'>{msgValidation.password}</p>
 
             <Button variant="contained" onClick={handleLogin} className='buttonLogin'
               sx={{
-                marginLeft:"10%"
+                marginLeft: "10%"
               }}
             >Đăng nhập</Button>
             <Stack direction="row" spacing={4} alignSelf="center">
@@ -244,6 +256,18 @@ function Login() {
             </Stack>
           </Stack>
         </Box>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Box
           width="50%"
           height="100vh"

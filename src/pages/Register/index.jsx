@@ -6,6 +6,7 @@ import Label from '../../assets/image/labelRegister.png'
 import './register.css'
 import { Link } from 'react-router-dom';
 import isEmpty from "validator/lib/isEmpty"
+import userData from './AccountData/USERS_DATA.json'
 
 function Register() {
 
@@ -17,6 +18,20 @@ function Register() {
     retakepassword: ""
   })
   console.log(account);
+
+  const [accountList, setAccountList] = useState(userData)
+
+  const saveAccountToJSON = (accountData) => {
+    // Lấy dữ liệu JSON hiện tại từ localStorage (nếu có)
+    const existingAccounts = JSON.parse(localStorage.getItem('user'));
+  
+    // Tạo một mảng mới chứa tài khoản mới
+    const updatedAccounts = existingAccounts ? [...existingAccounts, accountData] : [accountData];
+  
+    // Lưu trữ mảng tài khoản đã được cập nhật lại vào localStorage
+    localStorage.setItem('user', JSON.stringify(updatedAccounts));
+  };
+
 
   // const [accountList, setAccountList] = useState(() => {
   //   const storageAccount = JSON.parse(localStorage.getItem('account'))
@@ -41,7 +56,7 @@ function Register() {
     // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
     const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
     if (isEmpty(account.username)) {
-      msg.username = "*Bắc buộc"
+      msg.username = "*Bắt buộc"
     }
 
     // if(passwordPattern.test(account.password)){
@@ -62,14 +77,14 @@ function Register() {
     const birthYearPattern = /^(19\d\d|20[01]\d|202[0-3])$/;
 
     if (!birthYearPattern.test(account.birthYear)) {
-      msg.birthYear = "*Năm sinh bắc buộc từ 1900-2023";
+      msg.birthYear = "*Năm sinh bắt buộc từ 1900-2023";
     }
 
     if (isEmpty(account.password)) {
-      msg.password = "*Bắc buộc"
+      msg.password = "*Bắt buộc"
     }
     if (isEmpty(account.birthYear)) {
-      msg.birthYear = "*Bắc buộc"
+      msg.birthYear = "*Bắt buộc"
     }
 
 
@@ -81,11 +96,12 @@ function Register() {
 
   //Submit
   const handleRegister = () => {
-    const isValid = validateAll()
-    if (!isValid) return
-    return window.location.href = '/'
-
-  }
+    const isValid = validateAll();
+    if (!isValid) return;
+    saveAccountToJSON(account);
+    window.location.href = '/';
+  };
+  
   console.log(account);
   //Style
   const styleBox = {
@@ -202,7 +218,7 @@ function Register() {
               }}
             />
           </Stack>
-          <Stack direction="column" spacing={1} alignItems="center" marginTop="-16vh">
+          <Stack direction="column" spacing={1} alignItems="center" marginTop="-8vh">
             <Typography
               sx={{
                 color: "#fff",
