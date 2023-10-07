@@ -3,3 +3,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.css-yv7tzf-MuiButtonBase-root-MuiButton-root:hover {
+    background-color: red;
+}
+
+.css-8je8zh-MuiTouchRipple-root:hover {
+    background-color: #c7f7d4
+        /* animation-timing-function: ease-out; */
+        /* animation-duration: 300ms; */
+
+}

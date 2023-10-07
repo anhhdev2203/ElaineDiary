@@ -7,6 +7,8 @@ import Nagivation from "./nagivationBox";
 import ButtonBox from "../component/buttonBox";
 import { display, positions } from "@mui/system";
 import "../myDiary.css";
+import { DATASTORE } from "../../MyDiaryDetail/data/storeDinary";
+import { Link } from "react-router-dom";
 
 export const Img = styled("img")({
   width: "148px",
@@ -14,7 +16,6 @@ export const Img = styled("img")({
 });
 
 const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   backgroundColor: "#f0f4c3",
   ...theme.typography.body3,
   padding: theme.spacing(1),
@@ -23,12 +24,16 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: "none",
 }));
 
-function FormRow() {
+const handleClick = () => {};
+function FormRow({ value }) {
   return (
-    <React.Fragment>
+    <>
+      {/* <Link to={"1"}>
+        <button>1</button>
+      </Link> */}
       <Grid item xs={3}>
         <Item>
-          <Img alt="folderStore" src={folderStore} />
+          <Img alt="folderStore" src={folderStore} onClick={handleClick} />
           <Typography>Tiêu đề 1</Typography>
           <Typography>23/09/2923</Typography>
         </Item>
@@ -47,10 +52,13 @@ function FormRow() {
           <Typography>23/09/2923</Typography>
         </Item>
       </Grid>
-    </React.Fragment>
+    </>
   );
 }
 export function StoreBox() {
+  // const [dinaryList, setDinaryList] = useState(DATASTORE);
+  const [value, setValue] = React.useState(DATASTORE);
+
   return (
     <Box
       sx={{
@@ -70,7 +78,7 @@ export function StoreBox() {
         </Grid>
       </Grid>
       <Box sx={{ display: "flex", alignItems: "center", position: "relative" }}>
-        <ButtonBox content="Tạo nhật kí mới" color="#EDD0DA" />
+        <ButtonBox content="Tạo nhật kí mới" />
         <Nagivation />
       </Box>
     </Box>
