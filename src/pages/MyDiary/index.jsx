@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { StoreBox } from "./box/storeBox";
-import { Stack, Box, Typography, styled } from "@mui/material";
-
+import { StoreBox } from "./component/storeBox";
+import { Stack, Box, Typography, styled, Button } from "@mui/material";
+import arrowBack from "../MyDiaryDetail/img/arrowBack.svg";
+import cameraImg from "./img/cameraImg.png";
+import flowerImg from "./img/flowerImg.png";
 function mydiary() {
   return (
     <>
@@ -18,7 +20,118 @@ function mydiary() {
           flexDirection: "column",
         }}
       >
-        <StoreBox />
+        <Stack
+          direction={"row"}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Box
+            component="img"
+            src={arrowBack}
+            alt="ArrowBack"
+            sx={{
+              width: "2%",
+              position: "absolute",
+              top: "72px",
+              left: "24px",
+            }}
+          />
+          <Box
+            alt="Camera"
+            component="img"
+            src={cameraImg}
+            sx={{
+              // width: "2",
+              position: "absolute",
+              // top: "72px",
+              // left: "24px",
+              width: " 200px",
+              height: " 234.78px",
+              // top: "px",
+              left: "-5px",
+              angle: "28.51 deg",
+            }}
+          />
+
+          <Stack>
+            <Typography
+              component="h1"
+              variant="h6"
+              align="center"
+              sx={{
+                color: "#E41B1B",
+
+                fontSize: "46px",
+                fontFamily: "Dancing Script",
+              }}
+              // sx={{
+              //   fontSize: "46px",
+              //   fontFamily: "Dancing Script",
+              //   "@media (max-width: 320px)": {
+              //     fontSize: "100px",
+              //   },
+              //   "@media (min-width: 320px) and (max-width: 992px)": {
+              //     fontSize: "60px",
+              //   },
+              //   "@media (min-width: 992px) and(max-width: 1800px)": {
+              //     fontSize: "100px",
+              //   },
+
+              //   "@media (min-width: 1800px)and (max-width: 2600px)": {
+              //     fontSize: "100px",
+              //   },
+              //   "@media (min-width: 2600px)": {
+              //     fontSize: "150px",
+              //   },
+              // }}
+            >
+              Kho lưu trữ
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "Roboto",
+                color: "#EB5050C4",
+                fontWeight: "600",
+                display: "flex",
+                justifyContent: "center",
+                fontSize: "12px",
+                lineHeight: "24px",
+              }}
+            >
+              Cùng xem lại Nhật Kí của bạn nào!!!
+            </Typography>
+          </Stack>
+        </Stack>
+        <Stack
+          direction={"row"}
+          sx={{
+            display: "flex",
+            // justifyContent: "center",
+            alignItems: "flex-end",
+            width: "100%",
+          }}
+        >
+          <StoreBox />
+          <Box
+            alt="Flower"
+            component="img"
+            src={flowerImg}
+            sx={{
+              // width: "2",
+              position: "absolute",
+              // top: "72px",
+              // left: "24px",
+              width: " 200px",
+              bottom: "-1px",
+              right: "-5px",
+              angle: "28.51 deg",
+            }}
+          />
+        </Stack>
       </Stack>
     </>
   );

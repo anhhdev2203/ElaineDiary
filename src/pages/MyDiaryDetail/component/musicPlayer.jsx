@@ -14,46 +14,29 @@ import RepeatIcon from "@mui/icons-material/Repeat";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 
-const Widget = styled("div")(({ theme }) => ({
-  padding: 12,
+const Widget = styled("div")(() => ({
+  padding: "14px 72px",
   borderRadius: "50px 50px 0 0",
-  // width: 343,
+  width: "675px",
   maxWidth: "100%",
-  width:"750px",
-  height:"135px",
-  margin: "auto",
+  //đoạn này fix sau
+
   position: "relative",
-  marginTop:35,
-  zIndex: 1,
-  backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
-  backdropFilter: "blur(40px)",
+  marginTop: 35,
+  backgroundColor: "#fff",
 }));
 
-// const CoverImage = styled("div")({
-//   width: 100,
-//   height: 100,
-//   objectFit: "cover",
-//   overflow: "hidden",
-//   flexShrink: 0,
-//   borderRadius: 8,
-//   backgroundColor: "rgba(0,0,0,0.08)",
-//   "& > img": {
-//     width: "100%",
-//   },
-// });
-
 const TinyText = styled(Typography)({
-  fontSize: "0.75rem",
-  opacity: 0.38,
+  fontSize: "0.4rem",
+  opacity: 0.7,
   fontWeight: 500,
   letterSpacing: 0.2,
+  color: "#000",
 });
 
 export function MusicPlayer() {
-  const theme = useTheme();
-  const duration = 200; // seconds
-  const [position, setPosition] = React.useState(32);
+  const duration = 305; // seconds
+  const [position, setPosition] = React.useState(75);
   const [paused, setPaused] = React.useState(false);
   function formatDuration(value) {
     const minute = Math.floor(value / 60);
@@ -61,21 +44,29 @@ export function MusicPlayer() {
     return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
   }
   const mainIconColor = "#8966AF";
-  const lightIconColor =
-    theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+
   return (
-    <Box sx={{ width: "100%", overflow: "hidden", color: mainIconColor }}>
+    <Box
+      sx={{
+        overflow: "hidden",
+        color: mainIconColor,
+      }}
+    >
       <Widget>
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
             justifyContent: "center",
-            mt: -1,
+            mt: -2,
+            mb: -2,
           }}
         >
-          <IconButton aria-label="previous song">
-            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
+          <IconButton>
+            <FastRewindRounded
+              sx={{ height: "20px" }}
+              fontSize="large"
+              htmlColor={mainIconColor}
+            />
           </IconButton>
           <IconButton
             aria-label={paused ? "play" : "pause"}
@@ -83,18 +74,22 @@ export function MusicPlayer() {
           >
             {paused ? (
               <PlayArrowRounded
-                sx={{ fontSize: "3rem" }}
+                sx={{ fontSize: "2rem" }}
                 htmlColor={mainIconColor}
               />
             ) : (
               <PauseRounded
-                sx={{ fontSize: "3rem" }}
+                sx={{ fontSize: "2rem" }}
                 htmlColor={mainIconColor}
               />
             )}
           </IconButton>
-          <IconButton aria-label="next song">
-            <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
+          <IconButton>
+            <FastForwardRounded
+              sx={{ height: "20px" }}
+              fontSize="large"
+              htmlColor={mainIconColor}
+            />
           </IconButton>
         </Box>
         <Slider
@@ -107,7 +102,7 @@ export function MusicPlayer() {
           onChange={(_, value) => setPosition(value)}
           sx={{
             color: mainIconColor,
-            height: 4,
+            height: 3,
             "& .MuiSlider-thumb": {
               width: 8,
               height: 8,
@@ -140,43 +135,19 @@ export function MusicPlayer() {
           <TinyText>-{formatDuration(duration - position)}</TinyText>
         </Box>
         <Stack
-          spacing={5}
+          spacing={10}
           direction="row"
           sx={{
-            mb: 1,
+            // mb: 1,
             px: 1,
             justifyContent: "space-evenly",
+            alignItems: "center",
           }}
-          alignItems="center"
         >
-          <DownloadIcon />
-          <RepeatIcon />
-          <ShuffleIcon />
-          <FormatListBulletedIcon />
-          {/* <VolumeDownRounded htmlColor={lightIconColor} />
-          <Slider
-            aria-label="Volume"
-            defaultValue={30}
-            sx={{
-              color:
-                theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
-              "& .MuiSlider-track": {
-                border: "none",
-              },
-              "& .MuiSlider-thumb": {
-                width: 24,
-                height: 24,
-                backgroundColor: "#fff",
-                "&:before": {
-                  boxShadow: "0 4px 8px rgba(0,0,0,0.4)",
-                },
-                "&:hover, &.Mui-focusVisible, &.Mui-active": {
-                  boxShadow: "none",
-                },
-              },
-            }}
-          />
-          <VolumeUpRounded htmlColor={lightIconColor} /> */}
+          <DownloadIcon sx={{ height: "20px" }} />
+          <RepeatIcon sx={{ height: "20px" }} />
+          <ShuffleIcon sx={{ height: "20px" }} />
+          <FormatListBulletedIcon sx={{ height: "20px" }} />
         </Stack>
       </Widget>
     </Box>
