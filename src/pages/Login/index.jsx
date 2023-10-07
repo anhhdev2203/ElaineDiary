@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Box, Button, Slide, Stack, TextField, Typography } from '@mui/material';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Logo from '../../assets/image/logoSignup.png'
@@ -8,18 +8,37 @@ import '../../App.css'
 import './login.css'
 import isEmpty from "validator/lib/isEmpty"
 import { useState } from 'react'
-import Register from '../Register';
 
 import createSlider from './slide';
 
 
-const Login = ({account, setAccount, accountList, setAccountList}) =>  {
+function Login() {
+  const [account, setAccount] = useState({
+    id: "",
+    username: "",
+    birthYear: "",
+    password: ""
+  })
 
+  const [accountList, setAccountList] = useState([
+    {
+      id: 1,
+      username: "admin",
+      birthYear:"1999",
+      password:"123"
+    },{
+      id: 2,
+      username: "manager",
+      birthYear:"2001",
+      password:"abc"
+      
+    }
+  ])
   //Validation
   const [msgValidation, setMsgValidation] = useState('')
 
   const validateAll = () => {
-    const msg = {}
+    let msg = {}
     if (isEmpty(account.username)) {
       msg.username = "Username is required"
     }
@@ -27,17 +46,61 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
       msg.password = "Password is required"
     }
 
+    const accountExist = accountList.some(
+      (acc) => acc.username === account.username && acc.password === account.password
+    );
+  
+
     setMsgValidation(msg)
     if (Object.keys(msg).length > 0) return false
     return true
   }
 
   //Submit
-  const handleLogin= () => {
+
+  const handleLogin = () => {
     const isValid = validateAll()
-    if(!isValid) return 
+    if (!isValid) return
+    const accountExist = accountList.some(acc => acc.username === account.username && acc.password === account.password)
+    if(accountExist) 
+    return  window.location.href = '/'
+    setMsgValidation("Username or Password is incorrect")
+    return alert("Username or password is incorrect")
+    
+
+    
+    // return <Navigate to="/register" replace={true}></Navigate>
+    
   }
-  
+
+  console.log(account);
+  //Style textField
+  const styleBox = {
+    borderRadius: "24px",
+    backgroundColor: " #EFC2C2",
+    width: "60%",
+    '& .MuiTextField-root': {
+      marginRight: "10% !important",
+      borderRadius: "24px",
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: "black !important", 
+      margin: "10px 0 0 10px"// Đổi màu khi label được focus
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: "none", // Đổi màu của border khi input không focus
+      },
+      '&:hover fieldset': {
+        borderColor: '#5D579A', // Đổi màu của border khi hover vào input
+      },
+      '&.Mui-focused fieldset': {
+        border: "none", // Đổi màu của border khi input được focus
+      },
+    },
+
+    
+  }
 
   return (
     <>
@@ -48,11 +111,12 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
             padding: 0;
             overflow: hidden;
             height: 100%;
+            border: "none"
           }
         `}
       </style>
-      
-      
+
+
       <Stack direction="row"
         sx={{
           backgroundColor: "#FFF6DC",
@@ -60,10 +124,10 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
           position: 'relative'
         }}
       >
-        <Box 
-        sx={{
-          width:"50%"
-        }}
+        <Box
+          sx={{
+            width: "50%"
+          }}
         >
           <Box
             component="img"
@@ -93,8 +157,8 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
             sx={{
               width: "100%",
               marginBottom: "8vh",
-              marginTop: "24vh",
-                          
+              marginTop: "16vh",
+
             }}>
             <Typography
               sx={{
@@ -103,8 +167,8 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
                 textAlign: "center",
                 lineHeight: "normal",
                 fontWeight: 400,
-                fontSize: 64,
-                
+                fontSize: 60,
+
 
               }}
             >I'm here...</Typography>
@@ -117,27 +181,50 @@ const Login = ({account, setAccount, accountList, setAccountList}) =>  {
             >Đây là miền kí ức của bạn</Typography>
           </Box>
 
+
+
+
           <Stack
             direction="column"
             spacing={2}
-            sx={{              
-              width:"70%",
-              marginLeft:"5%",
+            sx={{
+              width: "100%",
+              
               alignItems: 'center',
             }}
           >
-            <TextField id="outlined-basic" label="Tên người dùng" variant="outlined" />
-            <p className='errorMsg'>{msgValidation.username}</p>
+            <TextField id="outlined-basic" label="Tên người dùng" variant="outlined"
+             onChange={(e) => {
+              setAccount({
+                ...account,
+                username: e.target.value,
+              })
+            }}
+            sx={styleBox}
+            />
+            <p className='errorMsgLogin'>{msgValidation.username}</p>
 
             <TextField id="outlined-password-input"
               label="Mật khẩu"
               type="password"
               autoComplete="off"
-              // autoComplete="current-password"
+            // autoComplete="current-password"
+            onChange={(e) => {
+              setAccount({
+                ...account,
+                password: e.target.value,
+              })
+              
+            }}
+            sx={styleBox}
             />
-            <p className='errorMsg'>{msgValidation.password}</p>
+            <p className='errorMsgLogin'>{msgValidation.password}</p>
 
-            <Button variant="contained" onClick={handleLogin}>Đăng nhập</Button>
+            <Button variant="contained" onClick={handleLogin} className='buttonLogin'
+              sx={{
+                marginLeft:"10%"
+              }}
+            >Đăng nhập</Button>
             <Stack direction="row" spacing={4} alignSelf="center">
               <Typography
                 sx={{

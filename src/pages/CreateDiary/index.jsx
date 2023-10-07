@@ -8,6 +8,18 @@ import { styled } from "@mui/material/styles";
 import { createTheme } from "@mui/system";
 import { ContentBox } from "../MyDiaryDetail/data/contentBox";
 import {Swiper} from "swiper";
+import imgAdd from '../../assets/image/imgImport.png'
+import musicAdd from '../../assets/image/musicImport.png'
+import addBtn from '../../assets/image/addBtn.png'
+import imgAddBtn from '../../assets/image/addImgBtn.png'
+import musicAddBtn from '../../assets/image/musicAddBtn.png'    
+import binderNote from '../../assets/image/binderNote.png'
+import verysad from '../../assets/image/verysad.png'
+import sad from '../../assets/image/sad.png'
+import normal from '../../assets/image/normal.png'
+import happy from '../../assets/image/happy.png'
+import veryhappy from '../../assets/image/veryhappy.png'
+import saveBtn from '../../assets/image/savingBtn.png'
 
 import socong from "../../assets/image/socong.png"
 
@@ -195,6 +207,25 @@ function CreateDiary() {
               </Stack>
             </Stack>
           </Stack>
+          <Stack direction="row">
+            <Stack direction="column" 
+            >
+              <Box component="img" src={imgAdd} alt=""/>
+              <Box component="img" src={imgAddBtn} alt=""/>
+            </Stack>
+            <Stack direction="column" 
+            >
+              <Box component="img" src={musicAdd} alt=""/>
+              <Box component="img" src={musicAddBtn} alt=""/>
+
+            </Stack>
+            <Box component="img" src={verysad} alt=""/>
+            <Box component="img" src={sad} alt=""/>
+            <Box component="img" src={normal} alt=""/>
+            <Box component="img" src={happy} alt=""/>
+            <Box component="img" src={veryhappy} alt=""/>
+            <Box component="img" src={saveBtn} alt=""/>
+            </Stack>
         </Container>
       </Box>
     </>

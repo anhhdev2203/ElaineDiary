@@ -10,25 +10,27 @@ import isEmpty from "validator/lib/isEmpty"
 function Register() {
 
   const [account, setAccount] = useState({
-    
+    id: "",
     username: "",
-    email: "",
-    password: ""
+    birthYear: "",
+    password: "",
+    retakepassword: ""
   })
   console.log(account);
 
-  const [accountList, setAccountList] = useState(() => {
-    const storageAccount = JSON.parse(localStorage.getItem('account'))
-    console.log(storageAccount);
-    return storageAccount
-  })
+  // const [accountList, setAccountList] = useState(() => {
+  //   const storageAccount = JSON.parse(localStorage.getItem('account'))
+  //   console.log(storageAccount);
+  //   return storageAccount
+  // })
 
-  const handleSubmit = (prev) => {
-    const newAccountList = [...prev, account]
-    const jsonAccountList = JSON.stringify(newAccountList)
-    localStorage.setItem('account', jsonAccountList)
-    return newAccountList
-  }
+
+  // const handleSubmit = (prev) => {
+  //   const newAccountList = [...prev, account]
+  //   const jsonAccountList = JSON.stringify(newAccountList)
+  //   localStorage.setItem('account', jsonAccountList)
+  //   return newAccountList
+  // }
 
 
   //Validation
@@ -36,15 +38,41 @@ function Register() {
 
   const validateAll = () => {
     const msg = {}
+    // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
+    const passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
     if (isEmpty(account.username)) {
-      msg.username = "Username is required"
+      msg.username = "*Bắc buộc"
     }
-    if (isEmpty(account.email)) {
-      msg.email = "Email is required"
+
+    // if(passwordPattern.test(account.password)){
+    //   msg.password = "Password should have at least 8 character and contains at least one uppercase, one lowercase and a number"
+    // }
+    if (account.password.length < 8 && account.password.length > 0) {
+      msg.password = "*Độ dài mật khẩu ít nhất 8 chữ số"
     }
+
+    if (isEmpty(account.retakepassword)) {
+      msg.retakepassword = "*Bắt buộc"
+    }
+
+    if (account.password !== account.retakepassword) {
+      msg.retakepassword = "*Mật khẩu không khớp"
+    }
+
+    const birthYearPattern = /^(19\d\d|20[01]\d|202[0-3])$/;
+
+    if (!birthYearPattern.test(account.birthYear)) {
+      msg.birthYear = "*Năm sinh bắc buộc từ 1900-2023";
+    }
+
     if (isEmpty(account.password)) {
-      msg.password = "Password is required"
+      msg.password = "*Bắc buộc"
     }
+    if (isEmpty(account.birthYear)) {
+      msg.birthYear = "*Bắc buộc"
+    }
+
+
 
     setMsgValidation(msg)
     if (Object.keys(msg).length > 0) return false
@@ -54,8 +82,39 @@ function Register() {
   //Submit
   const handleRegister = () => {
     const isValid = validateAll()
-    if(!isValid) return 
+    if (!isValid) return
+    return window.location.href = '/'
+
   }
+  console.log(account);
+  //Style
+  const styleBox = {
+    borderRadius: "24px",
+    width: 400,
+    maxWidth: "80%",
+    marginLeft: "185px",
+    marginTop:"20px",
+    '& .MuiTextField-root': {
+      marginRight: "10% !important",
+      borderRadius: "24px",
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+      color: "black !important",
+      margin: "10px 0 0 10px"// Đổi màu khi label được focus
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: "none", // Đổi màu của border khi input không focus
+      },
+      '&:hover fieldset': {
+        borderColor: 'red', // Đổi màu của border khi hover vào input
+      },
+      '&.Mui-focused fieldset': {
+        border: "none", // Đổi màu của border khi input được focus
+      },
+    },
+  }
+
 
   return (
     <>
@@ -165,39 +224,40 @@ function Register() {
           </Stack>
 
           <Stack direction="column" spacing={2} alignItems="center"
-            sx={{
-              marginTop: "4vh",
-
-            }}
+            sx={styleBox}
           >
 
             <TextField id="outlined-basic" label="Tên người dùng" variant="outlined" size="small"
-              sx={{
-                width: 400,
-                maxWidth: "80%",
-              }}
+              sx={styleBox}
               onChange={(e) => {
                 setAccount({
                   ...account,
                   username: e.target.value,
                 })
               }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
+              }}
             />
             <p className='errorMsg'>{msgValidation.username}</p>
 
-            <TextField id="outlined-basic" label="Email" variant="outlined" size="small"
+            <TextField id="outlined-basic" label="Năm sinh" variant="outlined" size="small"
               sx={{
                 width: 400,
                 maxWidth: "80%"
               }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
+              }}
               onChange={(e) => {
                 setAccount({
                   ...account,
-                  email: e.target.value,
+                  birthYear: e.target.value,
                 })
               }}
             />
-            <p className='errorMsg email'>{msgValidation.email}</p>
+            <p className='errorMsg email'>{msgValidation.birthYear}</p>
+
 
             <TextField id="outlined-password-input"
               label="Mật khẩu"
@@ -213,6 +273,9 @@ function Register() {
                 width: 400,
                 maxWidth: "80%"
               }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
+              }}
             />
             <p className='errorMsg'>{msgValidation.password}</p>
 
@@ -224,10 +287,19 @@ function Register() {
               sx={{
                 width: 400,
                 maxWidth: "80%"
-              }}        
+              }}
+              onChange={(e) => {
+                setAccount({
+                  ...account,
+                  retakepassword: e.target.value,
+                })
+              }}
+              InputProps={{
+                style: { border: 'none', width: '100%', outline: 'none', fontSize: '13px' }, // Change the font size
+              }}
             />
-            <p className='errorMsg'>{msgValidation.password}</p>
-            
+            <p className='errorMsg'>{msgValidation.retakepassword}</p>
+
 
             <Button variant="contained"
               sx={{

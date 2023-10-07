@@ -11,9 +11,15 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import elaine from "../../assets/image/elaine.png";
+import logo from "../../assets/image/logouser.png"
+import arrowDown from "../../assets/image/arrowDown.png";
+import people from "../../assets/image/logochandung.png";
+
+import triangle from "../../assets/image/logotamgiac.png";
 const Con = styled(Container)({
   maxWidth: "1440px",
   width: "100%",
+  zIndex: 2
 });
 function Header() {
   return (
@@ -31,14 +37,22 @@ function Header() {
                 src={elaine}
                 alt="Elaine"
                 style={{
-                  width: "198px",
-                  height: "111px",
+                  width: "10%",
+                  
+
                 }}
               />
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ flex: 1, display: "flex", justifyContent: "end" }}
+                sx={{
+                  flex: 1,
+                  display: "flex",
+                  justifyContent: "end",
+                  fontFamily: "Inter",
+                  fontSize:"16px",
+                  
+                }}
               >
                 An Hoang
               </Typography>
@@ -46,12 +60,32 @@ function Header() {
                 style={{ width: " 124px", height: "64px" }}
                 src={people}
               ></img> */}
-              <PersonOutlineOutlinedIcon
+              {/* <PersonOutlineOutlinedIcon
                 sx={{ width: "124px", height: "64px" }}
-              ></PersonOutlineOutlinedIcon>
-              <ArrowDropDownIcon
+              ></PersonOutlineOutlinedIcon> */}
+              
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo Username"
+                sx={{
+                  width:"6%",
+                  marginLeft:-1,
+                  marginRight:-1.5
+                }}
+              ></Box>
+              {/* <ArrowDropDownIcon
                 sx={{ width: "124px", height: "64px" }}
-              ></ArrowDropDownIcon>
+              ></ArrowDropDownIcon> */}
+              <Box
+                component="img"
+                src={arrowDown}
+                alt="Arrow Down"
+                sx={{
+                  marginRight:3,
+                  width:"4%"
+                }}
+              ></Box>
             </Toolbar>
           </AppBar>
         </Con>
