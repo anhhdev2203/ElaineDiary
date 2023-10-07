@@ -22,7 +22,7 @@ const Widget = styled("div")(() => ({
   boxSizing: "border-box",
 }));
 
-
+ 
 
 function MyDiary({currentUser}) {
   const [page, setPage] = useState(1);

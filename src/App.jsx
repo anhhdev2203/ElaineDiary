@@ -12,6 +12,8 @@ import MemorableDiary from "./pages/MemorableDiary";
 import EditInfo from "./pages/EditInfo";
 import Header from "./pages/Header";
 import { ACCOUNT_DATA } from "./data/USERS_DATA";
+import { THONG_KE } from "./data/THONG_KE";
+
 
 function App() {
   const location = useLocation();
@@ -19,6 +21,13 @@ function App() {
   // console.log(number);
   const [accountList, setAccountList] = useState(ACCOUNT_DATA) 
   const [currentUser, setCurrentUser] = useState()
+  const [staticals, setStaticals] = useState({
+    labels: THONG_KE.map((data) => data.date),
+    datasets: [{
+      label: "Emotion",
+      data: THONG_KE.map(data => data.emotion)
+    }]
+  })
 
   console.log(currentUser);
   return (
@@ -40,7 +49,7 @@ function App() {
           path="/creatediary"
           element={<CreateDiary currentUser={currentUser}></CreateDiary>}
         ></Route>
-        <Route path="/chart" element={<Chart currentUser={currentUser}></Chart>}></Route>
+        <Route path="/chart" element={<Chart currentUser={currentUser} staticals={staticals}></Chart>}></Route>
         <Route
           path="/yourdiary"
           element={<YourDiaryDetail currentUser={currentUser}></YourDiaryDetail>}
