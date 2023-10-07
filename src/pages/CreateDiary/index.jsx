@@ -6,22 +6,22 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import HeadsetOutlinedIcon from "@mui/icons-material/HeadsetOutlined";
 import { styled } from "@mui/material/styles";
 import { createTheme } from "@mui/system";
-import { ContentBox } from "../MyDiaryDetail/data/contentBox";
-import {Swiper} from "swiper";
-import imgAdd from '../../assets/image/imgImport.png'
-import musicAdd from '../../assets/image/musicImport.png'
-import addBtn from '../../assets/image/addBtn.png'
-import imgAddBtn from '../../assets/image/addImgBtn.png'
-import musicAddBtn from '../../assets/image/musicAddBtn.png'    
-import binderNote from '../../assets/image/binderNote.png'
-import verysad from '../../assets/image/verysad.png'
-import sad from '../../assets/image/sad.png'
-import normal from '../../assets/image/normal.png'
-import happy from '../../assets/image/happy.png'
-import veryhappy from '../../assets/image/veryhappy.png'
-import saveBtn from '../../assets/image/savingBtn.png'
+import { ContentBox } from "../MyDiaryDetail/component/contentBox";
+import { Swiper } from "swiper";
+import imgAdd from "../../assets/image/imgImport.png";
+import musicAdd from "../../assets/image/musicImport.png";
+import addBtn from "../../assets/image/addBtn.png";
+import imgAddBtn from "../../assets/image/addImgBtn.png";
+import musicAddBtn from "../../assets/image/musicAddBtn.png";
+import binderNote from "../../assets/image/binderNote.png";
+import verysad from "../../assets/image/verysad.png";
+import sad from "../../assets/image/sad.png";
+import normal from "../../assets/image/normal.png";
+import happy from "../../assets/image/happy.png";
+import veryhappy from "../../assets/image/veryhappy.png";
+import saveBtn from "../../assets/image/savingBtn.png";
 
-import socong from "../../assets/image/socong.png"
+import socong from "../../assets/image/socong.png";
 
 const dateTitle = styled(Typography)({
   color: "#5B3C6D",
@@ -175,7 +175,14 @@ function CreateDiary() {
               <Box style={{ borderBottom: "1px solid #000", height: "50px" }}>
                 <InputBase
                   placeholder="Tiêu đề nhật kí"
-                  style={{ color: "#5B3C6D", fontFamily: "Roboto", fontSize: "24px", fontWeight: 600, textAlign: "center" , marginLeft: "100px"}}
+                  style={{
+                    color: "#5B3C6D",
+                    fontFamily: "Roboto",
+                    fontSize: "24px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    marginLeft: "100px",
+                  }}
                   inputProps={{
                     sx: {
                       "&::placeholder": {
@@ -188,11 +195,25 @@ function CreateDiary() {
                   Tiêu đề nhật kí
                 </InputBase>
               </Box>
-              <Stack display="flex" flexDirection ="row" >
-                <CardMedia component = "img" image={socong} sx = {{width: '100px', height: '440px'}}></CardMedia>
+              <Stack display="flex" flexDirection="row">
+                <CardMedia
+                  component="img"
+                  image={socong}
+                  sx={{ width: "100px", height: "440px" }}
+                ></CardMedia>
                 <InputBase
                   placeholder="Nhập nội dung nhật kí"
-                  style={{ color: "#5B3C6D", width: "720px", height : "360px", display: "flex", alignItems: "baseline", fontFamily:"Roboto", fontSize: "20px", marginTop: "30px", padding: "12px"}}
+                  style={{
+                    color: "#5B3C6D",
+                    width: "720px",
+                    height: "360px",
+                    display: "flex",
+                    alignItems: "baseline",
+                    fontFamily: "Roboto",
+                    fontSize: "20px",
+                    marginTop: "30px",
+                    padding: "12px",
+                  }}
                   inputProps={{
                     sx: {
                       "&::placeholder": {
@@ -202,30 +223,26 @@ function CreateDiary() {
                     },
                   }}
                 ></InputBase>
-                <Swiper >
-                </Swiper>
+                <Swiper></Swiper>
               </Stack>
             </Stack>
           </Stack>
           <Stack direction="row">
-            <Stack direction="column" 
-            >
-              <Box component="img" src={imgAdd} alt=""/>
-              <Box component="img" src={imgAddBtn} alt=""/>
+            <Stack direction="column">
+              <Box component="img" src={imgAdd} alt="" />
+              <Box component="img" src={imgAddBtn} alt="" />
             </Stack>
-            <Stack direction="column" 
-            >
-              <Box component="img" src={musicAdd} alt=""/>
-              <Box component="img" src={musicAddBtn} alt=""/>
-
+            <Stack direction="column">
+              <Box component="img" src={musicAdd} alt="" />
+              <Box component="img" src={musicAddBtn} alt="" />
             </Stack>
-            <Box component="img" src={verysad} alt=""/>
-            <Box component="img" src={sad} alt=""/>
-            <Box component="img" src={normal} alt=""/>
-            <Box component="img" src={happy} alt=""/>
-            <Box component="img" src={veryhappy} alt=""/>
-            <Box component="img" src={saveBtn} alt=""/>
-            </Stack>
+            <Box component="img" src={verysad} alt="" />
+            <Box component="img" src={sad} alt="" />
+            <Box component="img" src={normal} alt="" />
+            <Box component="img" src={happy} alt="" />
+            <Box component="img" src={veryhappy} alt="" />
+            <Box component="img" src={saveBtn} alt="" />
+          </Stack>
         </Container>
       </Box>
     </>
