@@ -1,7 +1,7 @@
 import { Stack, Box, Typography, styled } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router";
-import { DATASTORE } from "./data/storeDinary";
+import { DATASTORE } from "./data/storeDiary";
 import { ContentBox, Img } from "./component/contentBox";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
