@@ -1,4 +1,4 @@
-import { DisplaySettings } from "@mui/icons-material";
+//import { DisplaySettings } from "@mui/icons-material";
 import { Box, Button, Card, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import CardMedia from "@mui/material/CardMedia";
@@ -21,7 +21,7 @@ const Title = styled(Typography)({
   justifyContent: "center",
   alignSelf: "center",
   textAlign: "center",
-  paddingBottom: "36px"
+  paddingBottom: "36px",
 });
 
 const Text = styled(Typography)({
@@ -48,7 +48,7 @@ const ButtonItem = styled(Button)({
 });
 const CardItem = styled(Card)({
   width: "380px",
-  height : "250px",
+  height: "250px",
   backgroundColor: "#E6F6CB",
   borderRadius: "25.967px",
   display: "flex",
@@ -66,82 +66,110 @@ const ButtonText = styled(Typography)({
   borderRadius: "8px",
 });
 function Home() {
+  
   return (
     <>
+      
       <Box
-      sx={{
-        // width: "100vw",
-        //height: "100vw",
-        background: "#F5CFCF",
-        paddingTop: "90px",
-        paddingBottom: "50px"
-      }}
-    >
-      <Container maxWidth="xl">
-        <Title>Trang chủ</Title>
-        <Stack display="flex "
+        sx={{
+          // width: "100vw",
+          //height: "100vw",
+          background: "#F5CFCF",
+          paddingTop: "90px",
+          paddingBottom: "50px",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Title>Trang chủ</Title>
+          <Stack
+            display="flex "
             flexDirection="column"
             //gap="55px"
             justifyContent="space-around"
             marginLeft="95px"
-            marginRight="95px">
-          <Stack
-            display="flex "
-            flexDirection="row"
-            gap="55px"
-            justifyContent="center"
+            marginRight="95px"
           >
-            <CardItem >
-              <CardMedia sx ={{height: "70%"}}component="img" image={taonhatki} />
-              <ButtonItem>
-                <ButtonText>Tạo nhật kí</ButtonText>
-              </ButtonItem>
-            </CardItem>
-            <CardItem>
-              <CardMedia
-                sx ={{height: "70%"}}
-                component="img"
-                image={luutru}
-              />
-              <ButtonItem>
-                <ButtonText>Lưu trữ</ButtonText>
-              </ButtonItem>
-            </CardItem>
-            <CardItem>
-              <CardMedia sx ={{height: "70%"}} component="img" image={nhatkiluutru} />
-              <ButtonItem>
-                <ButtonText>Nhật kí đáng nhớ</ButtonText>
-              </ButtonItem>
-            </CardItem>
+            <Stack
+              display="flex "
+              flexDirection="row"
+              gap="55px"
+              justifyContent="center"
+            >
+              <CardItem>
+                <CardMedia
+                  sx={{ height: "70%" }}
+                  component="img"
+                  image={taonhatki}
+                />
+                <ButtonItem>
+                  <Link to="/creatediary" style ={{textDecoration: "none"}}>
+                    <ButtonText>Tạo nhật kí</ButtonText>
+                  </Link>
+                </ButtonItem>
+              </CardItem>
+              <CardItem>
+                <CardMedia
+                  sx={{ height: "70%" }}
+                  component="img"
+                  image={luutru}
+                />
+                <ButtonItem>
+                  <Link to = "/mydiary" style ={{textDecoration: "none"}}>
+                  <ButtonText>Lưu trữ</ButtonText>
+                  </Link>
+                </ButtonItem>
+              </CardItem>
+              <CardItem>
+                <CardMedia
+                  sx={{ height: "70%" }}
+                  component="img"
+                  image={nhatkiluutru}
+                />
+                <ButtonItem>
+                  <Link to = "/memorablediary" style = {{textDecoration: "none"}}>
+                  <ButtonText>Nhật kí đáng nhớ</ButtonText>
+                  </Link>
+                </ButtonItem>
+              </CardItem>
+            </Stack>
+
+            <Text>
+              “Cuộc sống xô bồ cũng đừng quên dành thời gian cho bản thân nhé!”
+            </Text>
+
+            <Stack
+              display="flex "
+              flexDirection="row"
+              gap="55px"
+              justifyContent="center"
+            >
+              <CardItem>
+                <CardMedia
+                  sx={{ height: "70%" }}
+                  component="img"
+                  image={traodoinhatki}
+                />
+                <ButtonItem>
+                  <ButtonText>Trao đổi nhật kí</ButtonText>
+                </ButtonItem>
+              </CardItem>
+
+              <CardItem>
+                <CardMedia
+                  sx={{ height: "70%" }}
+                  component="img"
+                  image={thongke}
+                />
+                <ButtonItem>
+                  <Link to = "/chart" style ={{textDecoration: "none"}}>
+                  <ButtonText>Thống kê</ButtonText>
+                  </Link>
+                </ButtonItem>
+              </CardItem>
+            </Stack>
           </Stack>
-
-          <Text>
-            “Cuộc sống xô bồ cũng đừng quên dành thời gian cho bản thân nhé!”
-          </Text>
-
-          <Stack
-            display="flex "
-            flexDirection="row"
-            gap="55px"
-            justifyContent="center"
-          >
-            <CardItem>
-              <CardMedia  sx ={{height: "70%"}}component="img" image={traodoinhatki} />
-              <ButtonItem>
-                <ButtonText>Trao đổi nhật kí</ButtonText>
-              </ButtonItem>
-            </CardItem>
-
-            <CardItem>
-              <CardMedia sx ={{height: "70%"}} component="img" image={thongke} />
-              <ButtonItem>
-                <ButtonText>Thống kê</ButtonText>
-              </ButtonItem>
-            </CardItem>
-          </Stack>
-        </Stack>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
     </>
   );
 }
