@@ -42,7 +42,16 @@ export function StoreBox({ page }) {
         {value.map((data, index) => {
           if (index < page * 9 && index >= (page - 1) * 9) {
             return (
-              <Grid item xs={4} key={index} display={"grid"}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                // lg={3}
+                xl={2}
+                key={index}
+                display={"grid"}
+              >
                 <Item onClick={() => detailRoute(data.id)}>
                   <Img sx={{}} alt="folderStore" src={folderStore} />
                   <Typography>{data.title}</Typography>

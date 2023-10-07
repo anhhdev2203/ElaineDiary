@@ -56,7 +56,7 @@ function MyDiaryDetail() {
     "@media (min-width: 1500px) and(max-width: 1800px)": {
       height: "200px",
     },
-    "@media (min-width: 1800px)and (max-width: 2600px)": {
+    "@media  (min-width: 1800px) and (max-width: 2600px)": {
       height: "450px",
     },
     "@media (min-width: 2600px)and (max-width: 2800px)": {
@@ -64,7 +64,7 @@ function MyDiaryDetail() {
       // top: "150px",
       // left: "190px",
     },
-    "@media (min-width: 2800px)": {
+    "@media  (min-width: 2800px)": {
       height: "900px",
       // top: "150px",
       // left: "190px",
