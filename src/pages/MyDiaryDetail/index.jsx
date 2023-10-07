@@ -1,7 +1,7 @@
 import { Stack, Box, Typography, styled } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router";
-import { DATASTORE } from "./data/storeDinary";
+import { DATASTORE } from "./data/storeDiary";
 import { ContentBox, Img } from "./component/contentBox";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -12,7 +12,7 @@ import { responsiveContent } from "./component/contentBox";
 
 import girlReads from "./img/readBook.png";
 
-function MyDiaryDetail() {
+function MyDiaryDetail({currentUser}) {
   const { id } = useParams();
   // happy: rất vui, great: vui, normal: bình thường, sad: buồn, upset: rất buồn
   const [dinaryList, setDinaryList] = useState(DATASTORE);
@@ -56,7 +56,7 @@ function MyDiaryDetail() {
     "@media (min-width: 1500px) and(max-width: 1800px)": {
       height: "200px",
     },
-    "@media (min-width: 1800px)and (max-width: 2600px)": {
+    "@media  (min-width: 1800px) and (max-width: 2600px)": {
       height: "450px",
     },
     "@media (min-width: 2600px)and (max-width: 2800px)": {
@@ -64,7 +64,7 @@ function MyDiaryDetail() {
       // top: "150px",
       // left: "190px",
     },
-    "@media (min-width: 2800px)": {
+    "@media  (min-width: 2800px)": {
       height: "900px",
       // top: "150px",
       // left: "190px",

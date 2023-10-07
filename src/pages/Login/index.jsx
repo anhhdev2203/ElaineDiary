@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Box, Button, Slide, Stack, TextField, Typography } from '@mui/material';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Logo from '../../assets/image/logoSignup.png'
@@ -8,48 +8,49 @@ import '../../App.css'
 import './login.css'
 import isEmpty from "validator/lib/isEmpty"
 import { useState } from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import createSlider from './slide';
+import { ACCOUNT_DATA } from '../../data/USERS_DATA';
 
 
-function Login() {
-  const [account, setAccount] = useState({
-    id: "",
-    username: "",
-    birthYear: "",
-    password: ""
-  })
+function Login({accountList, currentUser, setCurrentUser}) {
+  // const [account, setAccount] = useState({
+  //   id: "",
+  //   username: "",
+  //   birthYear: "",
+  //   password: ""
+  // })
+  // const [accountList, setAccountList] = useState([
+  //   {
+  //     id: 1,
+  //     username: "admin",
+  //     birthYear:"1999",
+  //     password:"123"
+  //   },{
+  //     id: 2,
+  //     username: "manager",
+  //     birthYear:"2001",
+  //     password:"abc"
 
-  const [accountList, setAccountList] = useState([
-    {
-      id: 1,
-      username: "admin",
-      birthYear:"1999",
-      password:"123"
-    },{
-      id: 2,
-      username: "manager",
-      birthYear:"2001",
-      password:"abc"
-      
-    }
-  ])
+  //   }
+  // ])
   //Validation
   const [msgValidation, setMsgValidation] = useState('')
 
   const validateAll = () => {
     let msg = {}
-    if (isEmpty(account.username)) {
-      msg.username = "Username is required"
+    if (isEmpty(currentUser.username)) {
+      msg.username = "*Bắt buộc"
     }
-    if (isEmpty(account.password)) {
-      msg.password = "Password is required"
+    if (isEmpty(currentUser.password)) {
+      msg.password = "*Bắt buộc"
     }
 
     const accountExist = accountList.some(
-      (acc) => acc.username === account.username && acc.password === account.password
+      (acc) => acc.username === currentUser.username && acc.password === currentUser.password
     );
-  
+
 
     setMsgValidation(msg)
     if (Object.keys(msg).length > 0) return false
@@ -57,23 +58,66 @@ function Login() {
   }
 
   //Submit
-
+  const navigate = useNavigate()
   const handleLogin = () => {
     const isValid = validateAll()
     if (!isValid) return
-    const accountExist = accountList.some(acc => acc.username === account.username && acc.password === account.password)
-    if(accountExist) 
-    return  window.location.href = '/'
-    setMsgValidation("Username or Password is incorrect")
-    return alert("Username or password is incorrect")
-    
+    const accountExist = accountList.filter(acc => acc.username === currentUser.username && acc.password === currentUser.password)
 
     
+    if (accountExist.length === 1){
+      setCurrentUser(accountExist[0])
+      navigate("/")
+
+    }
+      
+    //setMsgValidation("Username or Password is incorrect")
+    return toast.error('Tên người dùng hoặc mật khẩu không đúng', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+
+
     // return <Navigate to="/register" replace={true}></Navigate>
-    
+
   }
 
-  console.log(account);
+  // const handleLogin = () => {
+  //   const isValid = validateAll();
+  //   if (!isValid) return;
+  
+  //   const accountIndex = accountList.findIndex(
+  //     (acc) => acc.username === currentUser.username && acc.password === currentUser.password
+  //   );
+  
+  //   if (accountIndex !== -1) {
+  //     // Tài khoản được tìm thấy trong mảng accountList
+  //     // Bạn có thể sử dụng accountIndex ở đây
+  //     navigate("/");
+  //   } else {
+  //     // Tài khoản không tồn tại, hiển thị thông báo lỗi
+  //     toast.error('Tên người dùng hoặc mật khẩu không đúng', {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
+  // };
+  
+
+  console.log(currentUser);
   //Style textField
   const styleBox = {
     borderRadius: "24px",
@@ -84,7 +128,7 @@ function Login() {
       borderRadius: "24px",
     },
     '& .MuiInputLabel-root.Mui-focused': {
-      color: "black !important", 
+      color: "black !important",
       margin: "10px 0 0 10px"// Đổi màu khi label được focus
     },
     '& .MuiOutlinedInput-root': {
@@ -99,7 +143,7 @@ function Login() {
       },
     },
 
-    
+
   }
 
   return (
@@ -189,18 +233,18 @@ function Login() {
             spacing={2}
             sx={{
               width: "100%",
-              
+
               alignItems: 'center',
             }}
           >
             <TextField id="outlined-basic" label="Tên người dùng" variant="outlined"
-             onChange={(e) => {
-              setAccount({
-                ...account,
-                username: e.target.value,
-              })
-            }}
-            sx={styleBox}
+              onChange={(e) => {
+                setCurrentUser({
+                  ...currentUser,
+                  username: e.target.value,
+                })
+              }}
+              sx={styleBox}
             />
             <p className='errorMsgLogin'>{msgValidation.username}</p>
 
@@ -208,21 +252,21 @@ function Login() {
               label="Mật khẩu"
               type="password"
               autoComplete="off"
-            // autoComplete="current-password"
-            onChange={(e) => {
-              setAccount({
-                ...account,
-                password: e.target.value,
-              })
-              
-            }}
-            sx={styleBox}
+              // autoComplete="current-password"
+              onChange={(e) => {
+                setCurrentUser({
+                  ...currentUser,
+                  password: e.target.value,
+                })
+
+              }}
+              sx={styleBox}
             />
             <p className='errorMsgLogin'>{msgValidation.password}</p>
 
             <Button variant="contained" onClick={handleLogin} className='buttonLogin'
               sx={{
-                marginLeft:"10%"
+                marginLeft: "10%"
               }}
             >Đăng nhập</Button>
             <Stack direction="row" spacing={4} alignSelf="center">
@@ -244,6 +288,18 @@ function Login() {
             </Stack>
           </Stack>
         </Box>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Box
           width="50%"
           height="100vh"

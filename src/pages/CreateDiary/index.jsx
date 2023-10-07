@@ -96,7 +96,7 @@ function CreateDiary() {
         }}
       >
         <Container sx={{ maxWidth: "xl" }}>
-          <Stack>
+        
             <Stack
               display="flex"
               flexDirection="row"
@@ -232,6 +232,7 @@ function CreateDiary() {
                     textAlign: "center",
                     marginLeft: "100px",
                   }}
+                 
                   inputProps={{
                     sx: {
                       "&::placeholder": {
@@ -244,6 +245,12 @@ function CreateDiary() {
                   Tiêu đề nhật kí
                 </InputBase>
               </Box>
+              <Stack display="flex" flexDirection="row">
+                <CardMedia
+                  component="img"
+                  image={socong}
+                  sx={{ width: "100px", height: "440px" }}
+                ></CardMedia>
               <Stack display="flex" flexDirection="row">
                 <CardMedia
                   component="img"
@@ -263,6 +270,7 @@ function CreateDiary() {
                     marginTop: "30px",
                     padding: "12px",
                   }}
+                 
                   inputProps={{
                     sx: {
                       "&::placeholder": {
@@ -339,5 +347,6 @@ function CreateDiary() {
     </>
   );
 }
+
 
 export default CreateDiary;

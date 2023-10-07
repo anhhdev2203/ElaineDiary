@@ -3,10 +3,13 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import folderStore from "../img/folderStoreImg.png";
 import { Stack, Box, Typography, styled } from "@mui/material";
-import Nagivation from "./nagivationBox";
+import Nagivation from "./navigationBox";
 import ButtonBox from "../component/buttonBox";
 import { display, positions } from "@mui/system";
 import "../myDiary.css";
+import { DATASTORE } from "../../MyDiaryDetail/data/storeDiary.jsx";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/base";
 
 export const Img = styled("img")({
   width: "148px",
@@ -14,7 +17,6 @@ export const Img = styled("img")({
 });
 
 const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   backgroundColor: "#f0f4c3",
   ...theme.typography.body3,
   padding: theme.spacing(1),
@@ -23,56 +25,46 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: "none",
 }));
 
-function FormRow() {
-  return (
-    <React.Fragment>
-      <Grid item xs={3}>
-        <Item>
-          <Img alt="folderStore" src={folderStore} />
-          <Typography>Tiêu đề 1</Typography>
-          <Typography>23/09/2923</Typography>
-        </Item>
-      </Grid>
-      <Grid item xs={3}>
-        <Item>
-          <Img sx={{}} alt="folderStore" src={folderStore} />
-          <Typography>Tiêu đề 1</Typography>
-          <Typography>23/09/2923</Typography>
-        </Item>
-      </Grid>
-      <Grid item xs={3}>
-        <Item>
-          <Img sx={{}} alt="folderStore" src={folderStore} />
-          <Typography>Tiêu đề 1</Typography>
-          <Typography>23/09/2923</Typography>
-        </Item>
-      </Grid>
-    </React.Fragment>
-  );
-}
-export function StoreBox() {
+export function StoreBox({ page }) {
+  const [value, setValue] = React.useState(DATASTORE);
+  const detailRoute = (id) => {
+    console.log(id);
+  };
   return (
     <Box
       sx={{
+        width: "100%",
         fontFamily: "Roboto",
         flexDirection: "column",
       }}
     >
       <Grid container>
-        <Grid container item>
-          <FormRow />
-        </Grid>
-        <Grid container item>
-          <FormRow />
-        </Grid>
-        <Grid container item>
-          <FormRow />
-        </Grid>
+        {value.map((data, index) => {
+          if (index < page * 9 && index >= (page - 1) * 9) {
+            return (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                // lg={3}
+                xl={2}
+                key={index}
+                display={"grid"}
+              >
+                <Item onClick={() => detailRoute(data.id)}>
+                  <Img sx={{}} alt="folderStore" src={folderStore} />
+                  <Typography>{data.title}</Typography>
+                  <Typography>{data.date}</Typography>
+                </Item>
+              </Grid>
+            );
+          }
+        })}
       </Grid>
-      <Box sx={{ display: "flex", alignItems: "center", position: "relative" }}>
-        <ButtonBox content="Tạo nhật kí mới" color="#EDD0DA" />
-        <Nagivation />
-      </Box>
+      <Box
+        sx={{ display: "flex", alignItems: "center", position: "relative" }}
+      ></Box>
     </Box>
   );
 }
