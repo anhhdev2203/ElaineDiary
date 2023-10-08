@@ -16,6 +16,7 @@ import arrowDown from "../../assets/image/arrowDown.png";
 import people from "../../assets/image/logochandung.png";
 
 import triangle from "../../assets/image/logotamgiac.png";
+import { Link } from "react-router-dom";
 const Con = styled(Container)({
   maxWidth: "1440px",
   width: "100%",
@@ -33,15 +34,17 @@ function Header() {
             
           >
             <Toolbar style = {{ paddingLeft: "0", paddingRight: "0"}}>
+              <Link to="/" >
               <img
                 src={elaine}
                 alt="Elaine"
                 style={{
-                  width: "10%",
+                  width: "20%",
                   
 
                 }}
               />
+              </Link>
               <Typography
                 variant="h6"
                 component="div"

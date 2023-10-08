@@ -37,6 +37,8 @@ import socong from "../../assets/image/socong.png";
 import { Link } from "react-router-dom";
 import { DIARY_DATA } from "../../data/DIARY_DAT";
 import { generateRandomCode } from "../../utlis/code";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const dateTitle = styled(Typography)({
   color: "#5B3C6D",
@@ -113,6 +115,7 @@ function CreateDiary({ currentUser, diaryList, setDiaryList }) {
     };
     setDiary(a);
     setDiaryList([...diaryList, a]);
+    toast.success("Tạo nhật ký thành công!!!")
   };
   console.log(diaryList);
 
@@ -125,6 +128,18 @@ function CreateDiary({ currentUser, diaryList, setDiaryList }) {
 
   return (
     <>
+     <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       <Box
         sx={{
           paddingTop: "70px",
