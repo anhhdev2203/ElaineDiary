@@ -7,6 +7,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import cameraImg from "./img/camImg.png";
 import flowerImg from "./img/flowerImg.png";
 import ButtonBox from "../MyDiary/component/buttonBox";
+import { DATASTORE } from "../MyDiaryDetail/data/storeDiary.jsx";
+
 import Navigation from "../MyDiary/component/navigationBox";
 import folderMemory from "./img/folderMemory.png";
 const Widget = styled("div")(() => ({
@@ -25,6 +27,9 @@ const Widget = styled("div")(() => ({
 }));
 
 function MemorableDiary({ currentUser }) {
+  const value = DATASTORE.filter((data) => {
+    if (data.isMemory == true) return data;
+  });
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);
@@ -76,7 +81,7 @@ function MemorableDiary({ currentUser }) {
                 variant="h6"
                 align="center"
                 sx={{
-                  color: "#E41B1B",
+                  color: "rgba(130, 135, 183, 1)",
                   fontSize: "64px",
                   fontFamily: "Dancing Script",
                 }}
@@ -96,7 +101,12 @@ function MemorableDiary({ currentUser }) {
               padding: "20px",
             }}
           >
-            <StoreBox page={page} img={folderMemory} />
+            <StoreBox
+              page={page}
+              img={folderMemory}
+              memory={true}
+              value={value}
+            />
           </Stack>
 
           <Box
@@ -111,7 +121,7 @@ function MemorableDiary({ currentUser }) {
               top: "80%",
             }}
           />
-          <Navigation page={page} setPage={handlePage} />
+          <Navigation page={page} setPage={handlePage} value={value} />
 
           <Box
             alt="Flower"
