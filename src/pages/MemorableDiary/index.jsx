@@ -19,7 +19,7 @@ const Widget = styled("div")(() => ({
   alignItems: "center",
   fontFamily: "Roboto",
   flexDirection: "column",
-  backgroundColor: "#f0f4c3",
+  backgroundColor: "rgba(206, 214, 234, 1)",
   boxSizing: "border-box",
   overflow: "hidden",
 }));
@@ -81,20 +81,7 @@ function MemorableDiary({ currentUser }) {
                   fontFamily: "Dancing Script",
                 }}
               >
-                Kho lưu trữ
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: "Roboto",
-                  color: "#EB5050C4",
-                  fontWeight: "600",
-                  display: "flex",
-                  justifyContent: "center",
-                  fontSize: "12px",
-                  lineHeight: "24px",
-                }}
-              >
-                Cùng xem lại Nhật Kí của bạn nào!!!
+                Nhật ký đáng nhớ
               </Typography>
             </Stack>
           </Stack>
@@ -112,27 +99,19 @@ function MemorableDiary({ currentUser }) {
             <StoreBox page={page} img={folderMemory} />
           </Stack>
 
-          <Stack
-            direction={"row"}
+          <Box
+            alt="Camera"
+            component="img"
+            src={books}
             sx={{
-              display: "flex",
-              width: "100vw",
+              position: "fixed",
+              width: " 160px",
+              height: "160px",
+              left: "1px",
+              top: "80%",
             }}
-          >
-            <Box
-              alt="Camera"
-              component="img"
-              src={books}
-              sx={{
-                position: "absolute",
-                width: " 150px",
-                height: "150px",
-
-                bottom: "-3%",
-              }}
-            />
-            <Navigation page={page} setPage={handlePage} />
-          </Stack>
+          />
+          <Navigation page={page} setPage={handlePage} />
 
           <Box
             alt="Flower"

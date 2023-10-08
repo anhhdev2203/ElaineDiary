@@ -17,20 +17,19 @@ export const Img = styled("img")({
   height: "90px",
 });
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#f0f4c3",
+const Item = styled(Paper)(({ theme, color }) => ({
+  // backgroundColor: { color },
   ...theme.typography.body3,
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
   boxShadow: "none",
+  backgroundColor: "#fff0",
 }));
 
 export function StoreBox({ page, img }) {
   const [value, setValue] = React.useState(DATASTORE);
-  const detailRoute = (id) => {
-    console.log(id);
-  };
+
   return (
     <Box
       sx={{
@@ -53,11 +52,13 @@ export function StoreBox({ page, img }) {
                 key={index}
                 display={"grid"}
               >
-                <Item onClick={() => detailRoute(data.id)}>
-                  <Img alt="folderStore" src={img} />
-                  <Typography>{data.title}</Typography>
-                  <Typography>{data.date}</Typography>
-                </Item>
+                <Link to={data.id}>
+                  <Item onClick={() => handleClick(data.id)}>
+                    <Img alt="folderStore" src={img} />
+                    <Typography>{data.title}</Typography>
+                    <Typography>{data.date}</Typography>
+                  </Item>
+                </Link>
               </Grid>
             );
           }
