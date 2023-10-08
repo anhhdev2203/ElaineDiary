@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { StoreBox } from "../MyDiary/component/storeBox";
 import { Stack, Box, Typography, styled, Button } from "@mui/material";
 import books from "./img/teaBook.png";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -9,6 +8,7 @@ import flowerImg from "./img/flowerImg.png";
 import ButtonBox from "../MyDiary/component/buttonBox";
 import Navigation from "../MyDiary/component/navigationBox";
 import folderMemory from "./img/folderMemory.png";
+import { StoreBox } from "./storeBox";
 const Widget = styled("div")(() => ({
   paddingTop: "  80px",
   paddingBottom: "20px",
@@ -24,7 +24,8 @@ const Widget = styled("div")(() => ({
   overflow: "hidden",
 }));
 
-function MemorableDiary({ currentUser }) {
+function MemorableDiary({ currentUser, diaryList }) {
+  console.log ("haha", currentUser)
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);
@@ -96,7 +97,7 @@ function MemorableDiary({ currentUser }) {
               padding: "20px",
             }}
           >
-            <StoreBox page={page} img={folderMemory} />
+            <StoreBox currentUser = {currentUser} diaryList = {diaryList} page={page} img={folderMemory} />
           </Stack>
 
           <Box

@@ -1,16 +1,14 @@
+import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Stack, Box, Typography, styled } from "@mui/material";
-import Nagivation from "./navigationBox";
-import ButtonBox from "../component/buttonBox";
+
 import { display, positions } from "@mui/system";
-import "../myDiary.css";
-import { DATASTORE } from "../../MyDiaryDetail/data/storeDiary.jsx";
+import "./myDiary.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/base";
 import moment from "moment/moment";
-import { DIARY_DATA } from "../../../data/DIARY_DAT";
-import { useState } from "react";
+import { DIARY_DATA } from "../../data/DIARY_DAT";
 // import {moment} from "momentjs"
 
 export const Img = styled("img")({
@@ -34,7 +32,8 @@ export function StoreBox({ page, img, currentUser, diaryList }) {
   console.log("!!!");
   console.log (currentUser)
   console.log (diaryList)
-  const [value, setValue] = useState(diaryList.filter((item)=>item.userID == currentUser.userID));
+  console.log (diaryList.filter(item=>item.isHeart == "1" && item.userID == currentUser.userID))
+  const [value, setValue] = React.useState(diaryList.filter(item=>item.isHeart == "1" && item.userID == currentUser.userID));
 
   return (
     <Box

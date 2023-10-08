@@ -24,7 +24,7 @@ const Widget = styled("div")(() => ({
   overflow: "hidden",
 }));
 
-function MyDiary({ currentUser }) {
+function MyDiary({ currentUser, diaryList }) {
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);
@@ -44,13 +44,14 @@ function MyDiary({ currentUser }) {
               // position: "relative",
             }}
           >
-            <ArrowBackIcon
+            <Link to = "/"><ArrowBackIcon
               sx={{
                 color: "#EFCC96 ",
                 position: "absolute",
                 left: "10px",
               }}
             />
+            </Link>
             <Box
               alt="Camera"
               component="img"
@@ -110,7 +111,7 @@ function MyDiary({ currentUser }) {
               padding: "20px",
             }}
           >
-            <StoreBox page={page} img={folderStore} />
+            <StoreBox diaryList={ diaryList} currentUser={currentUser} page={page} img={folderStore} />
           </Stack>
 
           <Stack

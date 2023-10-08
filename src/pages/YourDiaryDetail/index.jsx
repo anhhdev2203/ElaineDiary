@@ -10,6 +10,7 @@ function YourDiaryDetail({ currentUser, diaryList }) {
   console.log(prams.sharecode);
   return (
     <>
+    
       <MyDiaryDetail currentUser={currentUser} dataStore={DATAFRIEND} />
     </>
   );
