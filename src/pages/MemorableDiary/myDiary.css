@@ -1,0 +1,39 @@
+:hover {
+    transition: all 200ms linear;
+}
+
+.css-1f064cs-MuiGrid-root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-yv7tzf-MuiButtonBase-root-MuiButton-root:hover {
+    background-color: red !important;
+
+}
+
+.css-8je8zh-MuiTouchRipple-root:hover {
+    background-color: #c7f7d4 !important;
+    /* animation-timing-function: ease-out; */
+    /* animation-duration: 300ms; */
+
+}
+
+.css-lathnc-MuiButtonBase-root-MuiButton-root:hover {
+    background-color: #A1AECF !important;
+
+}
+
+.css-9jvw0u-MuiButtonBase-root-MuiPaginationItem-root {
+    /* background-color: aliceblue; */
+    border: 1px solid #DFE3E8;
+    background-color: #FFF !important;
+    color: #DFE3E8 !important;
+}
+
+
+.css-9jvw0u-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    border: 1px solid #D794CC;
+    color: #CB76A9 !important;
+}

@@ -24,10 +24,14 @@ const Widget = styled("div")(() => ({
   overflow: "hidden",
 }));
 
-function MyDiary({ currentUser }) {
-  const value = DATASTORE.filter((data) => {
-    if (data.isMemory == false) return data;
+function MyDiary({ currentUser, diaryList }) {
+  console.log('diaryList');
+  console.log(diaryList);
+  console.log(currentUser);
+  const value = diaryList.filter((data) => {
+    if (data.userID == currentUser.userID) return data;
   });
+  console.log(value);
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);
@@ -47,13 +51,14 @@ function MyDiary({ currentUser }) {
               // position: "relative",
             }}
           >
-            <ArrowBackIcon
+            <Link to = "/"><ArrowBackIcon
               sx={{
                 color: "#EFCC96 ",
                 position: "absolute",
                 left: "10px",
               }}
             />
+            </Link>
             <Box
               alt="Camera"
               component="img"

@@ -1,10 +1,11 @@
 import MyDiaryBox from "./component/myDiaryBox";
 import { DATASTORE } from "./data/storeDiary";
 
-function MyDiaryDetail({ currentUser }) {
+function MyDiaryDetail({ currentUser, diaryList }) {
+  
   return (
     <>
-      <MyDiaryBox currentUser={currentUser} dataStore={DATASTORE} />
+      <MyDiaryBox currentUser={currentUser} diaryList={diaryList} />
     </>
   );
 }

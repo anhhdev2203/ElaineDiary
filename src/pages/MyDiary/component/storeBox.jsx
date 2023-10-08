@@ -1,4 +1,3 @@
-import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Stack, Box, Typography, styled } from "@mui/material";
@@ -8,6 +7,10 @@ import { display, positions } from "@mui/system";
 import "../myDiary.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/base";
+import moment from "moment/moment";
+import { DIARY_DATA } from "../../../data/DIARY_DAT";
+import { useState } from "react";
+// import {moment} from "momentjs"
 
 export const Img = styled("img")({
   position: "sticky",
@@ -26,10 +29,12 @@ const Item = styled(Paper)(({ theme, color }) => ({
 }));
 
 export function StoreBox({ page, img, memory, value }) {
-  const [listData, setListData] = React.useState(value);
-  const list = (value, memory) => {
-    memory === true ? value.filter((data) => data.isMemory === true) : value;
-  };
+  const [listData, setListData] =useState(value);
+  // const list = (value, memory) => {
+  //   memory === true ? value.filter((data) => data.isMemory === true) : value;
+  // };'
+console.log('value');
+console.log(value);
   return (
     <>
       <Box
@@ -40,11 +45,10 @@ export function StoreBox({ page, img, memory, value }) {
         }}
       >
         <Grid container>
-          {listData.map((data, index) => {
+          {value.map((data, index) => {
             if (
               index < page * 9 &&
-              index >= (page - 1) * 9 &&
-              data.isMemory === memory
+              index >= (page - 1) * 9 
             ) {
               return (
                 <Grid
@@ -61,7 +65,7 @@ export function StoreBox({ page, img, memory, value }) {
                     <Item>
                       <Img alt="folderStore" src={img} />
                       <Typography>{data.title}</Typography>
-                      <Typography>{data.date}</Typography>
+                      <Typography>{moment(data.date).subtract(10, 'days').calendar()}</Typography>
                     </Item>
                   </Link>
                 </Grid>

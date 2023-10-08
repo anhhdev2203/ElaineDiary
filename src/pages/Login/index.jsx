@@ -19,6 +19,7 @@ import { useState } from "react";
 // import 'react-toastify/dist/ReactToastify.css';
 import createSlider from "./slide";
 import { ACCOUNT_DATA } from "../../data/USERS_DATA";
+import { ToastContainer } from "react-toastify";
 
 function Login({ accountList, currentUser, setCurrentUser }) {
   // const [account, setAccount] = useState({

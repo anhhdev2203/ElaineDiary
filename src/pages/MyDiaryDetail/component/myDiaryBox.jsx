@@ -1,6 +1,6 @@
 import { Stack, Box, Typography, styled } from "@mui/material";
 import { useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ContentBox, Img } from "./contentBox";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
@@ -9,6 +9,7 @@ import { MusicBox } from "./musicBox";
 import { responsiveContent } from "./contentBox";
 
 import girlReads from "../img/readBook.png";
+import { Link } from "react-router-dom";
 
 function MyDiaryBox({ currentUser, dataStore }) {
   const { id } = useParams();
@@ -31,6 +32,7 @@ function MyDiaryBox({ currentUser, dataStore }) {
         return "#ABABAB";
     }
   };
+  const navigate = useNavigate();
   // const responsiveBOX = {
   //   width: "80%",
   //   height: "480px",
@@ -106,6 +108,7 @@ function MyDiaryBox({ currentUser, dataStore }) {
                 }}
               >
                 <ArrowBackIcon
+                 onClick={() => navigate(-1)}
                   sx={{
                     color: "#AE95CE",
                     width: "2%",

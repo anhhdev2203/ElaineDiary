@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { StoreBox } from "../MyDiary/component/storeBox";
 import { Stack, Box, Typography, styled, Button } from "@mui/material";
 import books from "./img/teaBook.png";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -11,6 +10,7 @@ import { DATASTORE } from "../MyDiaryDetail/data/storeDiary.jsx";
 
 import Navigation from "../MyDiary/component/navigationBox";
 import folderMemory from "./img/folderMemory.png";
+import { StoreBox } from "./storeBox";
 const Widget = styled("div")(() => ({
   paddingTop: "  80px",
   paddingBottom: "20px",
@@ -26,7 +26,7 @@ const Widget = styled("div")(() => ({
   overflow: "hidden",
 }));
 
-function MemorableDiary({ currentUser }) {
+function MemorableDiary({ currentUser, diaryList }) {
   const value = DATASTORE.filter((data) => {
     if (data.isMemory == true) return data;
   });
@@ -106,6 +106,8 @@ function MemorableDiary({ currentUser }) {
               img={folderMemory}
               memory={true}
               value={value}
+              currentUser={currentUser}
+              diaryList={diaryList}
             />
           </Stack>
 
