@@ -1,9 +1,12 @@
-import React from 'react'
-
-function YourDiaryDetail({currentUser}) {
+import React from "react";
+import MyDiaryDetail from "../MyDiaryDetail/component/myDiaryBox";
+import { DATAFRIEND } from "./data/storeFriData";
+function YourDiaryDetail({ currentUser }) {
   return (
-    <div>YourDiaryDetail</div>
-  )
+    <>
+      <MyDiaryDetail currentUser={currentUser} dataStore={DATAFRIEND} />
+    </>
+  );
 }
 
-export default YourDiaryDetail
+export default YourDiaryDetail;
