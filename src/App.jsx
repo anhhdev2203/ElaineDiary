@@ -13,14 +13,24 @@ import EditInfo from "./pages/EditInfo";
 import Header from "./pages/Header";
 import { ACCOUNT_DATA } from "./data/USERS_DATA";
 import { DIARY_DATA } from "./data/DIARY_DAT";
+import { THONG_KE } from "./data/THONG_KE";
 
 function App() {
   const location = useLocation();
   // const [number, setNumber] = useState(10)
   // console.log(number);
-  const [accountList, setAccountList] = useState(ACCOUNT_DATA) 
-  const [currentUser, setCurrentUser] = useState()
+  const [accountList, setAccountList] = useState(ACCOUNT_DATA);
+  const [currentUser, setCurrentUser] = useState();
   const [diaryList, setDiaryList] = useState(DIARY_DATA)
+  const [staticals, setStaticals] = useState({
+    labels: THONG_KE.map((data) => data.date),
+    datasets: [
+      {
+        label: "Emotion",
+        data: THONG_KE.map((data) => data.emotion),
+      },
+    ],
+  });
 
   console.log(currentUser);
   return (
@@ -30,10 +40,35 @@ function App() {
         <Header></Header>
       )}
       <Routes>
-        <Route path="/" element={<Home currentUser={currentUser} ></Home>}></Route>
-        <Route path="/login" element={<Login accountList={accountList}  currentUser={currentUser} setCurrentUser={setCurrentUser} ></Login>}></Route>
-        <Route path="/register" element={<Register setAccountList={setAccountList}  accountList={accountList} currentUser={currentUser} setCurrentUser={setCurrentUser}  ></Register>}></Route>
-        <Route path="/mydiary" element={<MyDiary currentUser={currentUser} diaryList ={diaryList} setDiaryList ={setAccountList}></MyDiary>}></Route>
+        <Route
+          path="/"
+          element={<Home currentUser={currentUser}></Home>}
+        ></Route>
+        <Route
+          path="/login"
+          element={
+            <Login
+              accountList={accountList}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            ></Login>
+          }
+        ></Route>
+        <Route
+          path="/register"
+          element={
+            <Register
+              setAccountList={setAccountList}
+              accountList={accountList}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            ></Register>
+          }
+        ></Route>
+        <Route
+          path="/mydiary"
+          element={<MyDiary currentUser={currentUser} diaryList ={diaryList} setDiaryList = {setDiaryList}></MyDiary>}
+        ></Route>
         <Route
           path="/mydiary/:id"
           element={<MyDiaryDetail currentUser={currentUser} diaryList={diaryList} setDiaryList ={setDiaryList}></MyDiaryDetail>}
@@ -42,16 +77,25 @@ function App() {
           path="/creatediary"
           element={<CreateDiary currentUser={currentUser} diaryList ={diaryList} setDiaryList = {setDiaryList}></CreateDiary>}
         ></Route>
-        <Route path="/chart" element={<Chart currentUser={currentUser}></Chart>}></Route>
         <Route
-          path="/yourdiary"
-          element={<YourDiaryDetail currentUser={currentUser}></YourDiaryDetail>}
+          path="/chart"
+          element={<Chart currentUser={currentUser}></Chart>}
         ></Route>
+        <Route
+          path="/yourdiary/:sharecode"
+          element={
+            <YourDiaryDetail currentUser={currentUser} diaryList={diaryList}></YourDiaryDetail>
+          }
+        ></Route>
+
         <Route
           path="/memorablediary"
           element={<MemorableDiary currentUser={currentUser} diaryList = {diaryList} setDiaryList = {setDiaryList}></MemorableDiary>}
         ></Route>
-        <Route path="/editinfo" element={<EditInfo currentUser={currentUser}></EditInfo>}></Route>
+        <Route
+          path="/editinfo"
+          element={<EditInfo currentUser={currentUser}></EditInfo>}
+        ></Route>
       </Routes>
     </>
   );

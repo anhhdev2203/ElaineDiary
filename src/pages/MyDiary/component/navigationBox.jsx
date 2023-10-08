@@ -22,8 +22,9 @@ export default function Navigation({ page, setPage }) {
           width: "inherit",
         }}
         count={count}
-        variant="outlined"
-        color="secondary"
+        variant="contained"
+        orientation="vertical"
+        aria-label="vertical contained button group"
         page={page}
         onChange={handleChange}
         shape="rounded"

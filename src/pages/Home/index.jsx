@@ -1,8 +1,8 @@
 //import { DisplaySettings } from "@mui/icons-material";
-import { Box, Button, Card, Container, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, Card, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Stack, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 import CardMedia from "@mui/material/CardMedia";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import luutru from "../../assets/image/luutru1.jpg";
 import nhatkiluutru from "../../assets/image/nhatkiyeuthich.jpg";
 import taonhatki from "../../assets/image/taonhatki.jpg";
@@ -73,10 +73,37 @@ function Home({currentUser}) {
   } else {
     console.log("currentUser là null hoặc undefined");
   }
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    console.log("Done");
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const [shareCode, setShareCode] = useState("")
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(`/yourdiary/${shareCode}`)
+  }
   return (
     <>
-      
+      <Dialog
+            open={isMenuOpen}
+            onClose={toggleMenu}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Trao đổi nhật kí"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+              <TextField id="outlined-basic" label="Nhập mã code " variant="outlined" onChange={(e) => setShareCode(e.target.value)}/>
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClick} autoFocus>
+                Xem nhật kí
+              </Button>
+            </DialogActions>
+          </Dialog>
       <Box
         sx={{
           // width: "100vw",
@@ -156,7 +183,7 @@ function Home({currentUser}) {
                   component="img"
                   image={traodoinhatki}
                 />
-                <ButtonItem>
+                <ButtonItem onClick={toggleMenu}>
                   <ButtonText>Trao đổi nhật kí</ButtonText>
                 </ButtonItem>
               </CardItem>

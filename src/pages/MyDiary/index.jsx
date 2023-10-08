@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { StoreBox } from "./component/storeBox";
 import { Stack, Box, Typography, styled, Button } from "@mui/material";
+import folderStore from "./img/folderStoreImg.png";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import cameraImg from "./img/cameraImg.png";
@@ -20,11 +21,10 @@ const Widget = styled("div")(() => ({
   flexDirection: "column",
   backgroundColor: "#f0f4c3",
   boxSizing: "border-box",
+  overflow: "hidden",
 }));
 
-
-
-function MyDiary({currentUser}) {
+function MyDiary({ currentUser }) {
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);
@@ -32,7 +32,8 @@ function MyDiary({currentUser}) {
   return (
     <>
       <Widget>
-        <Stack direction={"column"}>
+        {/* <Stack direction={"column"}> */}
+        <Stack direction={"column"} sx={{ width: "60%", alignItems: "center" }}>
           <Stack
             direction={"row"}
             sx={{
@@ -109,7 +110,7 @@ function MyDiary({currentUser}) {
               padding: "20px",
             }}
           >
-            <StoreBox page={page} />
+            <StoreBox page={page} img={folderStore} />
           </Stack>
 
           <Stack
@@ -130,7 +131,7 @@ function MyDiary({currentUser}) {
             sx={{
               position: "fixed",
               top: "300px",
-              width: " 200px",
+              width: " 130px",
               bottom: "-1px",
               right: "-5px",
             }}

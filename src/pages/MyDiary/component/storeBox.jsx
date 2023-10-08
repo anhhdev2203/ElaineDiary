@@ -1,7 +1,6 @@
 import * as React from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import folderStore from "../img/folderStoreImg.png";
 import { Stack, Box, Typography, styled } from "@mui/material";
 import Nagivation from "./navigationBox";
 import ButtonBox from "../component/buttonBox";
@@ -12,8 +11,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/base";
 
 export const Img = styled("img")({
-  width: "148px",
-  height: "114px",
+  position: "sticky",
+  zIndex: "1",
+  width: "128px",
+  height: "90px",
 });
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,7 +26,7 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: "none",
 }));
 
-export function StoreBox({ page }) {
+export function StoreBox({ page, img }) {
   const [value, setValue] = React.useState(DATASTORE);
   const detailRoute = (id) => {
     console.log(id);
@@ -53,7 +54,7 @@ export function StoreBox({ page }) {
                 display={"grid"}
               >
                 <Item onClick={() => detailRoute(data.id)}>
-                  <Img sx={{}} alt="folderStore" src={folderStore} />
+                  <Img alt="folderStore" src={img} />
                   <Typography>{data.title}</Typography>
                   <Typography>{data.date}</Typography>
                 </Item>
