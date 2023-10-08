@@ -66,13 +66,6 @@ const ButtonText = styled(Typography)({
   borderRadius: "8px",
 });
 function Home({currentUser}) {
-  console.log(currentUser);
-  if (currentUser) {
-    // Đây là ví dụ, bạn có thể làm gì đó với currentUser tại đây
-    console.log(`Xin chào, ${currentUser.userID}!`);
-  } else {
-    console.log("currentUser là null hoặc undefined");
-  }
 
   return (
     <>
