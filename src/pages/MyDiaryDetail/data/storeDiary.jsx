@@ -1,6 +1,6 @@
 export const DATASTORE = [
   {
-    memory: true,
+    isMemory: false,
     id: "1",
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
@@ -10,7 +10,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
 
     id: "2",
     title: "Gặp người quen",
@@ -19,7 +19,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
 
     id: "3",
     date: "Ngày 3 tháng 5",
@@ -28,7 +28,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "4",
     date: "Ngày 4 tháng 5",
@@ -37,7 +37,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "5",
     date: "Ngày 1 tháng 5",
@@ -46,7 +46,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "6",
     date: "Ngày 1 tháng 5",
@@ -55,7 +55,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "7",
     date: "Ngày 1 tháng 5",
@@ -64,7 +64,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
     id: "8",
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
@@ -72,7 +72,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
     id: "9",
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
@@ -84,11 +84,11 @@ export const DATASTORE = [
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
     color: "upset",
-    memory: true,
+    isMemory: true,
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
     id: "11",
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
@@ -98,7 +98,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
 
     id: "12",
     title: "Dự án Vẽ Đi Tre",
@@ -107,7 +107,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
 
     id: "13",
     date: "Ngày 3 tháng 5",
@@ -116,7 +116,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "14",
     date: "Ngày 4 tháng 5",
@@ -125,7 +125,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "15",
     date: "Ngày 1 tháng 5",
@@ -134,7 +134,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "16",
     date: "Ngày 1 tháng 5",
@@ -143,7 +143,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
 
     id: "17",
     date: "Ngày 1 tháng 5",
@@ -152,7 +152,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: false,
+    isMemory: false,
     id: "18",
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
@@ -160,7 +160,7 @@ export const DATASTORE = [
     author: "me",
   },
   {
-    memory: true,
+    isMemory: true,
     id: "19",
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
@@ -172,7 +172,7 @@ export const DATASTORE = [
     date: "Ngày 1 tháng 5",
     title: "Dự án Vẽ Đi Tre",
     color: "upset",
-    memory: true,
+    isMemory: true,
     author: "me",
   },
 ];

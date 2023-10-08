@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StoreBox } from "./component/storeBox";
 import { Stack, Box, Typography, styled, Button } from "@mui/material";
 import folderStore from "./img/folderStoreImg.png";
-
+import { DATASTORE } from "../MyDiaryDetail/data/storeDiary.jsx";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import cameraImg from "./img/cameraImg.png";
 import flowerImg from "./img/flowerImg.png";
@@ -25,6 +25,9 @@ const Widget = styled("div")(() => ({
 }));
 
 function MyDiary({ currentUser }) {
+  const value = DATASTORE.filter((data) => {
+    if (data.isMemory == false) return data;
+  });
   const [page, setPage] = useState(1);
   const handlePage = (val) => {
     setPage(val);
@@ -110,7 +113,12 @@ function MyDiary({ currentUser }) {
               padding: "20px",
             }}
           >
-            <StoreBox page={page} img={folderStore} />
+            <StoreBox
+              page={page}
+              img={folderStore}
+              memory={false}
+              value={value}
+            />
           </Stack>
 
           <Stack
@@ -121,7 +129,7 @@ function MyDiary({ currentUser }) {
             }}
           >
             <ButtonBox content="Tạo nhật kí mới" />
-            <Navigation page={page} setPage={handlePage} />
+            <Navigation page={page} setPage={handlePage} value={value} />
           </Stack>
 
           <Box
