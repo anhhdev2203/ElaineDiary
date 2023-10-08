@@ -29,6 +29,8 @@ import veryhappy from "../../assets/image/veryhappy.png";
 import SaveAltOutlinedIcon from "@mui/icons-material/SaveAltOutlined";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import socong from "../../assets/image/socong.png";
+import { Link } from "react-router-dom";
+import { DIARY_DATA } from "../../data/DIARY_DAT";
 
 const dateTitle = styled(Typography)({
   color: "#5B3C6D",
@@ -75,11 +77,45 @@ const theme = createTheme({
   },
 });
 
-function CreateDiary() {
-  //const [value, setValue] = useState(true);
+function CreateDiary({currentUser, diaryList, setDiaryList}) {
+//const [value, setValue] = useState(true);
+//const [title, setTitle] = useState ("")
+//const [content, setContent] = useState ("")
+console.log ('currentUser')
+console.log (currentUser)
 
-  const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleDateString();
+const currentDate = new Date();
+const formattedDate = currentDate.toLocaleDateString();
+  const [diary, setDiary] = useState({
+    id:  diaryList[diaryList.length-1].id+1,
+      date: currentDate.toLocaleDateString(),
+      title: "",
+      content: "",
+      isHeart: "0",
+      emotion: 0,
+      userID: 0,
+      shareCode: 0,
+      music: null,
+      img: null
+  })
+  
+  const handleSubmit = () => {
+    console.log (diary);
+    setDiaryList([...diaryList, diary])
+    setDiary ({
+      id: diaryList[diaryList.length-1]+1,
+      date: "",
+      title: "",
+      content: "",
+      isHeart: "0",
+      emotion: 0,
+      userID: currentUser.userID,
+      shareCode: 0,
+      music: null,
+      img: null
+    })
+  }
+  console.log(diaryList)
 
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
@@ -87,6 +123,8 @@ function CreateDiary() {
     console.log("Done");
     setIsMenuOpen(!isMenuOpen);
   };
+
+  
   return (
     <>
       <Box
@@ -109,10 +147,10 @@ function CreateDiary() {
                 alignItems="center"
                 flex="3"
               >
-                <ArrowBackIcon
+                <Link to = "/"><ArrowBackIcon
                   fontSize="large"
                   sx={{ marginRight: "32px" }}
-                ></ArrowBackIcon>
+                ></ArrowBackIcon></Link>
 
                 {/* Create code to share */}
                 <CodeButton color="primary" onClick={toggleMenu}>
@@ -152,6 +190,7 @@ function CreateDiary() {
               alignItems="center"
               justifyContent="end"
             >
+              <Box flex = "3"></Box>
               <Typography
                 display="flex"
                 flex="5"
@@ -187,7 +226,7 @@ function CreateDiary() {
               </Typography>
             </Stack>
 
-            {/* <Modal
+            <Modal
               open={isMenuOpen}
               onClose={toggleMenu}
             >
@@ -209,12 +248,11 @@ function CreateDiary() {
                 <InputBase>Code</InputBase>
                 <Button>Copy</Button>
               </Card>
-            </Modal> */}
+            </Modal>
             {/* Write a diary */}
             <Stack
-              display="flex"
               alignSelf="center"
-              style={{ border: "1px solid #000", borderRadius: "30px" }}
+              style={{ border: "1px solid #000", borderRadius: "30px", alignSelf:"center", margin: "0 auto"}}
               sx={{
                 width: "920px",
                 height: "480px",
@@ -225,32 +263,34 @@ function CreateDiary() {
                 <InputBase
                   placeholder="Tiêu đề nhật kí"
                   style={{
+                    display: "flex",
                     color: "#5B3C6D",
                     fontFamily: "Roboto",
                     fontSize: "24px",
                     fontWeight: 600,
-                    textAlign: "center",
-                    marginLeft: "100px",
                   }}
                  
                   inputProps={{
                     sx: {
+                      textAlign: "center",
                       "&::placeholder": {
                         color: "#5B3C6D",
-                        opacity: 1, // otherwise firefox shows a lighter color
+                        opacity: 1, 
                       },
                     },
                   }}
+                  //value = {diary.title}
+                  onChange={(e) => setDiary({...diary, title : e.target.value})}
                 >
                   Tiêu đề nhật kí
                 </InputBase>
               </Box>
               <Stack display="flex" flexDirection="row">
-                <CardMedia
+                {/* <CardMedia
                   component="img"
                   image={socong}
                   sx={{ width: "100px", height: "440px" }}
-                ></CardMedia>
+                ></CardMedia> */}
               <Stack display="flex" flexDirection="row">
                 <CardMedia
                   component="img"
@@ -279,6 +319,8 @@ function CreateDiary() {
                       },
                     },
                   }}
+                  //value = {diary.content}
+                  onChange={(e) => setDiary({...diary, content : e.target.value})}
                 ></InputBase>
                 {/* <Swiper >
                 </Swiper> */}
@@ -287,7 +329,7 @@ function CreateDiary() {
           </Stack>
           <Stack direction="row" paddingTop="40px">
             <Stack direction="column" flex="1" marginRight="20px">
-              <Box component="img" src={imgAdd} alt="" />
+              <Box component="img" src={imgAdd} alt=""  />
               <Box component="img" src={imgAddBtn} alt="" />
             </Stack>
             <Stack direction="column" flex="1">
@@ -306,30 +348,35 @@ function CreateDiary() {
                 component="img"
                 src={verysad}
                 alt=""
+                onClick= {() => setDiary ({...diary, emotion: 0})}
               />
               <Box
                 sx={{ width: "141px", height: " 158px" }}
                 component="img"
                 src={sad}
                 alt=""
+                onClick= {() => setDiary ({...diary, emotion: 1})}
               />
               <Box
                 sx={{ width: "141px", height: " 158px" }}
                 component="img"
                 src={normal}
                 alt=""
+                onClick= {() =>setDiary ({...diary, emotion: 2})}
               />
               <Box
                 sx={{ width: "141px", height: " 158px" }}
                 component="img"
                 src={happy}
                 alt=""
+                onClick= { () =>setDiary ({...diary, emotion: 3})}
               />
               <Box
                 sx={{ width: "141px", height: " 158px" }}
                 component="img"
                 src={veryhappy}
                 alt=""
+                onClick= {() =>setDiary ({...diary, emotion: 4})}
               />
             </Stack>
             <SaveAltOutlinedIcon
@@ -340,6 +387,7 @@ function CreateDiary() {
                 alignSelf: "end",
                 paddingBottom: "30px",
               }}
+              onClick = {handleSubmit}
             ></SaveAltOutlinedIcon>
           </Stack>
         </Container>
