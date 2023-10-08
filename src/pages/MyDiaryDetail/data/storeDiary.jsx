@@ -11,7 +11,7 @@ export const DATASTORE = [
   },
   {
     isMemory: true,
-
+    content: "Hôm nay trời nắng rất to",
     id: "2",
     title: "Gặp người quen",
     date: "Ngày 2 tháng 5",

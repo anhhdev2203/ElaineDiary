@@ -20,15 +20,15 @@ function MyDiaryBox({ currentUser, dataStore }) {
   const feelColor = (feel) => {
     switch (feel) {
       case "happy":
-        return "#e1bee7";
+        return "#C5ABC6";
       case "great":
-        return "#f48fb1";
+        return "#778877";
       case "normal":
-        return "#e57373";
+        return "#C2BCC5";
       case "sad":
-        return "#1976d2";
+        return "#A3ACB1";
       default:
-        return "#4a148c";
+        return "#ABABAB";
     }
   };
   // const responsiveBOX = {
