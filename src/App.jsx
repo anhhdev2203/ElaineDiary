@@ -26,7 +26,7 @@ function App() {
     labels: THONG_KE.map((data) => data.date),
     datasets: [
       {
-        label: "Emotion",
+        label: "Ezmotion",
         data: THONG_KE.map((data) => data.emotion),
         tension:0
       },
