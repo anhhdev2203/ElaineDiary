@@ -1,11 +1,18 @@
 import { Stack, Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import back from "../../assets/image/BackChart.png";
 import { Typography } from "@mui/material";
-// import { Line } from "react-chartjs-2"
-// import {Chart as charJS} from "chart.js/auto"
+ import { Line } from "react-chartjs-2"
+ import {Chart as charJS} from "chart.js/auto"
+import { useNavigate } from "react-router";
 
 function Chart({ currentUser, staticals }) {
+  const navigate = useNavigate()
+  // useEffect(() => {
+  //   // Gọi navigate trong useEffect để tránh lỗi
+  //   navigate('/');
+  // }, []);
+  
   return (
     <div>
       <Stack
@@ -32,6 +39,7 @@ function Chart({ currentUser, staticals }) {
               height: "21px",
               marginLeft: "32px !important",
             }}
+            onClick={() => navigate("/")}
           />
           <Box
             sx={{

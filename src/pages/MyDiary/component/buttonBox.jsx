@@ -21,9 +21,6 @@ export default function ButtonBox({ content }) {
               borderRadius: "24px !important",
               border: "1px solid #000",
               ml: "20px",
-              ":hover": {
-                // boxShadow: 6,
-              },
             }}
           >
             {content}

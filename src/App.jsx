@@ -28,6 +28,7 @@ function App() {
       {
         label: "Emotion",
         data: THONG_KE.map((data) => data.emotion),
+        tension:0
       },
     ],
   });
@@ -79,7 +80,7 @@ function App() {
         ></Route>
         <Route
           path="/chart"
-          element={<Chart currentUser={currentUser}></Chart>}
+          element={<Chart currentUser={currentUser} staticals={staticals}></Chart>}
         ></Route>
         <Route
           path="/yourdiary/:sharecode"
