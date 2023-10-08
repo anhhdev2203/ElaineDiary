@@ -7,7 +7,12 @@ import {
   TextField,
 } from "@mui/material";
 import "../img/cover.png";
-import feelImage from "../img/HAPPY.png";
+import Happy from "../img/HAPPY.png";
+import Great from "../img/Great.png";
+import Normal from "../img/normal.png";
+import Sad from "../img/sad.png";
+import VerySad from "../img/verysad.png";
+
 import Grid from "@mui/material/Unstable_Grid2";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { Stack, flexbox } from "@mui/system";
@@ -21,6 +26,20 @@ export const Img = styled("img")({
   top: 0,
   left: 0,
 });
+const feelImg = (feel) => {
+  switch (feel) {
+    case "happy":
+      return Happy;
+    case "great":
+      return Great;
+    case "normal":
+      return Normal;
+    case "sad":
+      return Sad;
+    default:
+      return VerySad;
+  }
+};
 
 export const responsiveContent = {
   "@media (max-width: 320px)": {
@@ -43,7 +62,7 @@ export const responsiveContent = {
   },
 };
 
-export const ContentBox = ({ title, content }) => {
+export const ContentBox = ({ title, content, feel }) => {
   return (
     <Box
       sx={{
@@ -114,7 +133,7 @@ export const ContentBox = ({ title, content }) => {
               {" "}
               <Box
                 component="img"
-                src={feelImage}
+                src={feelImg(feel)}
                 sx={{
                   width: "75px",
                   height: "75px",

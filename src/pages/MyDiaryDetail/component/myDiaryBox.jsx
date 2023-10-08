@@ -225,7 +225,11 @@ function MyDiaryBox({ currentUser, dataStore }) {
               </Stack>
 
               <Stack sx={{ display: "flex", justifyContent: "flex-end" }}>
-                <ContentBox title={diary.title} content={diary.content} />
+                <ContentBox
+                  title={diary.title}
+                  content={diary.content}
+                  feel={diary.color}
+                />
 
                 <Stack
                   sx={{
